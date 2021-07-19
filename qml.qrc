@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>LoginPage.qml</file>
+        <file>MainPage.qml</file>
+    </qresource>
+    <qresource prefix="/UIComponents">
+        <file>Drawer.qml</file>
     </qresource>
 </RCC>
