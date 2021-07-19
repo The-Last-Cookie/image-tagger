@@ -1,8 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include "logger.h"
+
 int main(int argc, char *argv[])
 {
+    Logger l("");
+    l.info("Starting application");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
