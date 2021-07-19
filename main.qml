@@ -6,7 +6,9 @@ Window {
     id: root
     visible: true
     width: 640
+    minimumWidth: 500
     height: 480
+    minimumHeight: 300
     title: qsTr("ImageTagger")
 
     StackView {
