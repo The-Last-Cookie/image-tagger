@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QString>
+#include <QFile>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QCoreApplication>
@@ -14,16 +15,18 @@ class DatabaseManager
         ~DatabaseManager();
 
         bool openConnection(QString path);
-        bool openConnection(QString path, int port);
+
+        void setPort(int port);
 
         bool deleteDatabase(QString path);
 
         bool isOpen();
 
-        bool close(QString path);
+        void closeConnection();
 
     private:
         QSqlDatabase m_db;
         bool m_isOpen;
+        int m_port;
 };
 
