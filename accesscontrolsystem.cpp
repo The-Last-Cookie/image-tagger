@@ -37,40 +37,17 @@ bool AccessControlSystem::createUser(QString name, QString password)
     }
 
     // Add new user to user file
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadWrite | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
-
     // TODO: implement system for id and path
-    QJsonObject newUser;
-    newUser.insert("name", QJsonValue(name));
-    newUser.insert("id", "");
-    newUser.insert("password", QJsonValue(password));
-    newUser.insert("path", "");
-
-    QJsonArray users = jsonObject["users"].toArray();
-    users.append(newUser);
-
-    jsonObject["users"] = users;
-
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        jsonDoc.setObject(jsonObject);
-
-        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
-
-        QTextStream out(&file);
-        out << bytes;
-    }
-
-    file.close();
+    User user;
+    user.setName(name);
+    //user.setId(id);
+    user.setPassword(password);
+    //user.setPath(path);
+    UserManager um;
+    um.addNewUser(user);
 
     // Create new files in user path
-    // TODO
+    //um.createUserFiles(path);
 
     return true;
 }

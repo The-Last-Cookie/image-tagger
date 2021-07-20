@@ -17,12 +17,16 @@ SOURCES += \
         accesscontrolsystem.cpp \
         logger.cpp \
         main.cpp \
-        passwordmanager.cpp
+        passwordmanager.cpp \
+        user.cpp \
+        usermanager.cpp
 
 HEADERS += \
     accesscontrolsystem.h \
     logger.h \
-    passwordmanager.h
+    passwordmanager.h \
+    user.h \
+    usermanager.h
 
 RESOURCES += qml.qrc
 
