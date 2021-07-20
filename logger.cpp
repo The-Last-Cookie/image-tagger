@@ -1,6 +1,6 @@
 #include "logger.h"
 
-Logger::Logger(std::string path) : m_path(path)
+Logger::Logger(QString path) : m_path(path)
 {
 
 }
@@ -10,62 +10,74 @@ Logger::~Logger()
 
 }
 
-void Logger::info(std::string message)
+void Logger::info(QString message)
 {
-    std::string date = getDate("YYYY-MM-DD");
+    QString date = getDate("YYYY-MM-DD");
 
-    std::fstream file;
-    file.open(m_path + "log_" + date + ".txt", std::ios::out | std::ios::app);
+    QFile file;
+    file.setFileName(m_path + "log_" + date + ".txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        QTextStream out(&file);
 
-    date = getDate("HH:MM:SS");
+        // A log message contains the time in HH:MM:SS
+        date = getDate("HH:MM:SS");
+        out << date << " INFO: " << message << "\n";
+    }
 
-    file << date << " INFO: " << message << "\n";
     file.close();
 }
 
-void Logger::warning(std::string message)
+void Logger::warning(QString message)
 {
-    std::string date = getDate("YYYY-MM-DD");
+    QString date = getDate("YYYY-MM-DD");
 
-    std::fstream file;
-    file.open(m_path + "log_" + date + ".txt", std::ios::out | std::ios::app);
+    QFile file;
+    file.setFileName(m_path + "log_" + date + ".txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        QTextStream out(&file);
 
-    date = getDate("HH:MM:SS");
+        // A log message contains the time in HH:MM:SS
+        date = getDate("HH:MM:SS");
+        out << date << " WARNING: " << message << "\n";
+    }
 
-    file << date << " WARNING: " << message << "\n";
     file.close();
 }
 
-void Logger::error(std::string message)
+void Logger::error(QString message)
 {
-    std::string date = getDate("YYYY-MM-DD");
+    QString date = getDate("YYYY-MM-DD");
 
-    std::fstream file;
-    file.open(m_path + "log_" + date + ".txt", std::ios::out | std::ios::app);
+    QFile file;
+    file.setFileName(m_path + "log_" + date + ".txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        QTextStream out(&file);
 
-    date = getDate("HH:MM:SS");
+        // A log message contains the time in HH:MM:SS
+        date = getDate("HH:MM:SS");
+        out << date << " ERROR: " << message << "\n";
+    }
 
-    file << date << " ERROR: " << message << "\n";
     file.close();
 }
 
-std::string Logger::getDate(std::string format)
+QString Logger::getDate(QString format)
 {
     // original format: 2021-07-19T15:05:29Z
-    std::string date = QDateTime::currentDateTime().toTimeSpec(Qt::OffsetFromUTC).toString(Qt::ISODate).toStdString();
+    QString date = QDateTime::currentDateTime().toTimeSpec(Qt::OffsetFromUTC).toString(Qt::ISODate);
 
     if (format == "YYYY-MM-DD") {
-        date = date.substr(0, 10);
+        date = date.mid(0, 10);
     }
 
     if (format == "HH:MM:SS") {
-        date = date.substr(11, 8);
+        date = date.mid(11, 9);
     }
 
     return date;
 }
 
-void Logger::setPath(std::string path)
+void Logger::setPath(QString path)
 {
     m_path = path;
 }

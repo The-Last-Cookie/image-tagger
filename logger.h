@@ -1,23 +1,23 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
+#include <QTextStream>
+#include <QFile>
 #include <QDateTime>
 
 class Logger
 {
     public:
-        Logger(std::string path);
+        Logger(QString path);
         ~Logger();
 
-        void info(std::string message);
-        void warning(std::string message);
-        void error(std::string message);
+        void info(QString message);
+        void warning(QString message);
+        void error(QString message);
 
-        std::string getDate(std::string format);
+        QString getDate(QString format);
 
-        void setPath(std::string path);
+        void setPath(QString path);
 
     private:
-        std::string m_path;
+        QString m_path;
 };
