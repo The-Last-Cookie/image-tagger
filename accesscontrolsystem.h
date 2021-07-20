@@ -19,7 +19,7 @@ class AccessControlSystem : public QObject
         AccessControlSystem();
         ~AccessControlSystem();
 
-        bool createUser(std::string name, std::string password);
+        bool createUser(QString name, QString password);
         bool deleteUser();
 
         bool login();
@@ -27,10 +27,10 @@ class AccessControlSystem : public QObject
 
         bool changePassword();
         bool validateUser();
-        bool usernameIsValid(std::string username);
+        bool usernameIsValid(QString username);
 
-        void encryptFiles(std::string path);
-        void decryptFiles(std::string path);
+        void encryptFiles(QString path);
+        void decryptFiles(QString path);
 
     private:
         PasswordManager m_pwm;

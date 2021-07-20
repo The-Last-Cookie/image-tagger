@@ -10,17 +10,17 @@ PasswordManager::~PasswordManager()
 
 }
 
-bool PasswordManager::checkPassword(std::string password)
+bool PasswordManager::checkPassword(QString password)
 {
     return false;
 }
 
-std::string PasswordManager::hashPassword(std::string password)
+QString PasswordManager::hashPassword(QString password)
 {
     return "";
 }
 
-bool PasswordManager::comparePasswordWithHash(std::string password, std::string hash)
+bool PasswordManager::comparePasswordWithHash(QString password, QString hash)
 {
     return false;
 }
@@ -40,7 +40,7 @@ void PasswordManager::setMinNumLower(int minNumLower)
     m_minNumLower = minNumLower;
 }
 
-void PasswordManager::setSpecialChars(std::string specialChars)
+void PasswordManager::setSpecialChars(QString specialChars)
 {
     m_specialChars = specialChars;
 }

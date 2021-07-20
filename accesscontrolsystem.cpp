@@ -26,7 +26,7 @@ AccessControlSystem::~AccessControlSystem()
 
 }
 
-bool AccessControlSystem::createUser(std::string name, std::string password)
+bool AccessControlSystem::createUser(QString name, QString password)
 {
     if (!usernameIsValid(name)) {
         return false;
@@ -47,14 +47,10 @@ bool AccessControlSystem::createUser(std::string name, std::string password)
     QJsonObject jsonObject = jsonDoc.object();
 
     // TODO: implement system for id and path
-    QString qname;
-    qname.fromStdString(name);
-    QString qpassword;
-    qpassword.fromStdString(password);
     QJsonObject newUser;
-    newUser.insert("name", QJsonValue(qname));
+    newUser.insert("name", QJsonValue(name));
     newUser.insert("id", "");
-    newUser.insert("password", QJsonValue(qpassword));
+    newUser.insert("password", QJsonValue(password));
     newUser.insert("path", "");
 
     QJsonArray users = jsonObject["users"].toArray();
@@ -79,7 +75,7 @@ bool AccessControlSystem::createUser(std::string name, std::string password)
     return true;
 }
 
-bool AccessControlSystem::usernameIsValid(std::string username)
+bool AccessControlSystem::usernameIsValid(QString username)
 {
     // Read in data
     QFile file;
@@ -93,9 +89,7 @@ bool AccessControlSystem::usernameIsValid(std::string username)
 
     QStringList keys = jsonObject.keys();
 
-    QString qname;
-    qname.fromStdString(username);
-    if (keys.contains(qname)) {
+    if (keys.contains(username)) {
         return false;
     }
 

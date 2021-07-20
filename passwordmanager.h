@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include <QString>
 
 class PasswordManager
 {
@@ -8,19 +8,19 @@ class PasswordManager
         PasswordManager();
         ~PasswordManager();
 
-        bool checkPassword(std::string password);
-        std::string hashPassword(std::string password);
-        bool comparePasswordWithHash(std::string password, std::string hash);
+        bool checkPassword(QString password);
+        QString hashPassword(QString password);
+        bool comparePasswordWithHash(QString password, QString hash);
 
         void setMinLength(int minLength);
         void setMinNumUpper(int minNumUpper);
         void setMinNumLower(int minNumLower);
-        void setSpecialChars(std::string specialChars);
+        void setSpecialChars(QString specialChars);
 
     private:
         int m_minLength;
         int m_minNumUpper;
         int m_minNumLower;
-        std::string m_specialChars;
+        QString m_specialChars;
 };
 
