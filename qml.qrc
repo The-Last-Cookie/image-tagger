@@ -6,5 +6,6 @@
     </qresource>
     <qresource prefix="/UIComponents">
         <file>Drawer.qml</file>
+        <file>FileListView.qml</file>
     </qresource>
 </RCC>
