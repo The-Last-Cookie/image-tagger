@@ -3,6 +3,9 @@
 #include <QString>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+#include <QCoreApplication>
+
+#include "logger.h"
 
 class DatabaseManager
 {
@@ -10,8 +13,8 @@ class DatabaseManager
         DatabaseManager();
         ~DatabaseManager();
 
-        void addDatabase(QString path);
-        void addDatabase(QString path, int port);
+        bool openConnection(QString path);
+        bool openConnection(QString path, int port);
 
         bool deleteDatabase(QString path);
 
@@ -20,7 +23,7 @@ class DatabaseManager
         bool close(QString path);
 
     private:
-        QSqlDatabase m_database;
+        QSqlDatabase m_db;
         bool m_isOpen;
 };
 
