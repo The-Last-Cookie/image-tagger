@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         accesscontrolsystem.cpp \
+        databasemanager.cpp \
         logger.cpp \
         main.cpp \
         passwordmanager.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 
 HEADERS += \
     accesscontrolsystem.h \
+    databasemanager.h \
     logger.h \
     passwordmanager.h \
     user.h \
