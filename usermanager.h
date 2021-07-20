@@ -2,11 +2,13 @@
 
 #include <QString>
 #include <QFile>
+#include <QDir>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 
 #include "user.h"
+#include "databasemanager.h"
 
 class UserManager
 {
