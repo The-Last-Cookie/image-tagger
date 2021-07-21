@@ -65,7 +65,7 @@ void UserManager::createUserFiles(QString path)
         "fileExtension TEXT,"
         "added DATE,"
         "size INTEGER,"
-        "PRIMARY KEY (fileId)"
+        "PRIMARY KEY (fileId ASC)"
         ")"
     );
 
@@ -75,7 +75,7 @@ void UserManager::createUserFiles(QString path)
         "authorId INTEGER NOT NULL UNIQUE,"
         "name TEXT,"
         "description TEXT,"
-        "PRIMARY KEY (authorId)"
+        "PRIMARY KEY (authorId ASC)"
         ")"
     );
 
@@ -85,7 +85,7 @@ void UserManager::createUserFiles(QString path)
         "tagId INTEGER NOT NULL UNIQUE,"
         "name TEXT,"
         "description TEXT,"
-        "PRIMARY KEY (tagId)"
+        "PRIMARY KEY (tagId  ASC)"
         ")"
     );
 
@@ -95,7 +95,7 @@ void UserManager::createUserFiles(QString path)
         "groupId INTEGER NOT NULL UNIQUE,"
         "name TEXT,"
         "description TEXT,"
-        "PRIMARY KEY (groupId)"
+        "PRIMARY KEY (groupId  ASC)"
         ")"
     );
 
@@ -147,7 +147,7 @@ void UserManager::createUserFiles(QString path)
         "CREATE TABLE favorites"
         "("
         "fileId INTEGER NOT NULL UNIQUE,"
-        "PRIMARY KEY (fileId)"
+        "PRIMARY KEY (fileId ASC)"
         ")"
     );
 

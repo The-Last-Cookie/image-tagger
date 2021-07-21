@@ -24,4 +24,3 @@ class PasswordManager
         int m_minNumLower;
         QString m_specialChars;
 };
-
