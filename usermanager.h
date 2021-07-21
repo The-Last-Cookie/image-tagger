@@ -25,4 +25,3 @@ class UserManager
 
         bool usernameIsValid(QString username);
 };
-
