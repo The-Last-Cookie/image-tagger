@@ -2,7 +2,7 @@
 
 DatabaseManager::DatabaseManager()
 {
-    m_port = -1;
+    m_port = 0;
 }
 
 DatabaseManager::~DatabaseManager()
@@ -16,7 +16,7 @@ bool DatabaseManager::openConnection(QString path)
         return false;
     }
 
-    if (m_port != -1) {
+    if (m_port != 0) {
         m_db.setPort(m_port);
     }
 
@@ -32,7 +32,7 @@ bool DatabaseManager::openConnection(QString path)
 
 void DatabaseManager::setPort(int port)
 {
-    if (!m_isOpen) {
+    if (port < 1) {
         return;
     }
 
