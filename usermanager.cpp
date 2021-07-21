@@ -184,13 +184,13 @@ QString UserManager::createUserId()
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    QJsonValue usersKey = jsonObject["users"];
+    QJsonArray users = jsonObject["users"].toArray();
 
-    if (jsonObject["users"].toArray().isEmpty()) {
+    if (users.isEmpty()) {
         return "1";
     }
 
-    QJsonValue lastUser = usersKey.toArray().last();
+    QJsonValue lastUser = users.last();
     QString id = lastUser["id"].toString();
 
     QString newId = QString::fromStdString(StringCalc::Decimal::add(id.toStdString(), "1"));
@@ -230,13 +230,12 @@ bool UserManager::usernameIsValid(QString username)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    QJsonValue usersKey = jsonObject["users"];
+    QJsonArray users = jsonObject["users"].toArray();
 
-    if (jsonObject["users"].toArray().isEmpty()) {
+    if (users.isEmpty()) {
         return true;
     }
 
-    QJsonArray users = usersKey.toArray();
     bool usernameExists = false;
     for (int i = 0; i < users.size(); i++) {
         if (users.at(i)["name"] == username) {
