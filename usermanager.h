@@ -9,6 +9,7 @@
 
 #include "user.h"
 #include "databasemanager.h"
+#include "settingsmanager.h"
 
 class UserManager
 {
