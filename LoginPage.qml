@@ -242,6 +242,7 @@ Item {
                 }
 
                 onClicked: {
+                    acs.createUser(nameCreate.text, passwordCreate.text)
                 }
             }
         }

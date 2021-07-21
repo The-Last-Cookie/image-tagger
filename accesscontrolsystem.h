@@ -20,6 +20,7 @@ class AccessControlSystem : public QObject
         AccessControlSystem();
         ~AccessControlSystem();
 
+    public slots:
         bool createUser(QString name, QString password);
         bool deleteUser();
 
