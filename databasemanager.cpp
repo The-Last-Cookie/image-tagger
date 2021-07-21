@@ -16,6 +16,8 @@ bool DatabaseManager::openConnection(QString path)
         return false;
     }
 
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+
     if (m_port != 0) {
         m_db.setPort(m_port);
     }
@@ -29,7 +31,6 @@ bool DatabaseManager::openConnection(QString path)
     }
 
     m_db.setDatabaseName("data/" + path + "/data.sqlite");
-    m_db = m_db.addDatabase("QSQLITE");
     m_isOpen = m_db.open();
 
     return m_isOpen;
