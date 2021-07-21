@@ -37,17 +37,16 @@ bool AccessControlSystem::createUser(QString name, QString password)
     }
 
     // Add new user to user file
-    // TODO: implement system for id and path
     User user;
-    user.setName(name);
-    //user.setId(id);
-    user.setPassword(password);
-    //user.setPath(path);
     UserManager um;
+    user.setName(name);
+    user.setId(um.createUserId());
+    user.setPassword(password);
+    user.setPath(um.createUserPath());
     um.addNewUser(user);
 
     // Create new files in user path
-    //um.createUserFiles(path);
+    um.createUserFiles(user.getPath());
 
     return true;
 }

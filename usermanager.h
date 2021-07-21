@@ -21,5 +21,6 @@ class UserManager
         void addNewUser(User user);
         void createUserFiles(QString path);
         QString createUserId();
+        QString createUserPath();
 };
 

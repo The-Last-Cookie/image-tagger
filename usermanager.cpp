@@ -194,3 +194,18 @@ QString UserManager::createUserId()
 
     return newId;
 }
+
+QString UserManager::createUserPath()
+{
+    QDir dir = QCoreApplication::applicationDirPath();
+    QFileInfoList fileList = dir.entryInfoList(QDir::Filter(QDir::Dirs), QDir::SortFlags(QDir::Name));
+
+    if (fileList.isEmpty()) {
+        return QString("1");
+    }
+
+    QString lastFileName = fileList.last().fileName();
+    QString newFileName = QString::fromStdString(StringCalc::Decimal::add(lastFileName.toStdString(),"1"));
+
+    return newFileName;
+}
