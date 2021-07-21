@@ -29,13 +29,13 @@ bool PasswordManager::checkPassword(QString password)
             break;
         }
     }
-    if (numUpper < m_minNumUpper) {
+    if (numUpper <= m_minNumUpper) {
         return false;
     }
 
     int numLower = 0;
     for (int i = 0; i < password.length(); i++) {
-        if (password.at(i).isUpper()) {
+        if (password.at(i).isLower()) {
             numLower++;
         }
 
@@ -43,7 +43,7 @@ bool PasswordManager::checkPassword(QString password)
             break;
         }
     }
-    if (numLower < m_minNumLower) {
+    if (numLower <= m_minNumLower) {
         return false;
     }
 
