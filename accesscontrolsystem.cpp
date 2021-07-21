@@ -28,7 +28,7 @@ AccessControlSystem::~AccessControlSystem()
 
 bool AccessControlSystem::createUser(QString name, QString password)
 {
-    if (!usernameIsValid(name)) {
+    if (!m_um.usernameIsValid(name)) {
         return false;
     }
 
@@ -47,27 +47,6 @@ bool AccessControlSystem::createUser(QString name, QString password)
 
     // Create new files in user path
     um.createUserFiles(user.getPath());
-
-    return true;
-}
-
-bool AccessControlSystem::usernameIsValid(QString username)
-{
-    // Read in data
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
-
-    QStringList keys = jsonObject.keys();
-
-    if (keys.contains(username)) {
-        return false;
-    }
 
     return true;
 }

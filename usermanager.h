@@ -22,5 +22,7 @@ class UserManager
         void createUserFiles(QString path);
         QString createUserId();
         QString createUserPath();
+
+        bool usernameIsValid(QString username);
 };
 

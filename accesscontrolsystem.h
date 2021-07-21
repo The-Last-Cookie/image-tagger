@@ -28,11 +28,11 @@ class AccessControlSystem : public QObject
 
         bool changePassword();
         bool validateUser();
-        bool usernameIsValid(QString username);
 
         void encryptFiles(QString path);
         void decryptFiles(QString path);
 
     private:
         PasswordManager m_pwm;
+        UserManager m_um;
 };
