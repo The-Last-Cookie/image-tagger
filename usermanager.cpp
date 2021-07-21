@@ -184,9 +184,13 @@ QString UserManager::createUserId()
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    QJsonArray users = jsonObject["users"].toArray();
+    QJsonValue usersKey = jsonObject["users"];
 
-    QJsonValue lastUser = users.last();
+    if (jsonObject["users"].toArray().isEmpty()) {
+        return "1";
+    }
+
+    QJsonValue lastUser = usersKey.toArray().last();
     QString id = lastUser["id"].toString();
 
     QString newId = QString::fromStdString(StringCalc::Decimal::add(id.toStdString(), "1"));
@@ -196,11 +200,12 @@ QString UserManager::createUserId()
 
 QString UserManager::createUserPath()
 {
-    QDir dir = QCoreApplication::applicationDirPath();
-    QFileInfoList fileList = dir.entryInfoList(QDir::Filter(QDir::Dirs), QDir::SortFlags(QDir::Name));
+    //QDir dir = QCoreApplication::applicationDirPath();
+    QDir dir("data/");
+    QFileInfoList fileList = dir.entryInfoList(QDir::Filters(QDir::Dirs | QDir::NoDotAndDotDot), QDir::SortFlags(QDir::Name));
 
     if (fileList.isEmpty()) {
-        return QString("1");
+        return "1";
     }
 
     QString lastFileName = fileList.last().fileName();
@@ -227,7 +232,7 @@ bool UserManager::usernameIsValid(QString username)
 
     QJsonValue usersKey = jsonObject["users"];
 
-    if (usersKey.isNull()) {
+    if (jsonObject["users"].toArray().isEmpty()) {
         return true;
     }
 
