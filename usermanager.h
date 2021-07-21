@@ -10,6 +10,7 @@
 #include "user.h"
 #include "databasemanager.h"
 #include "settingsmanager.h"
+#include "StringCalc/stringcalc.h"
 
 class UserManager
 {
@@ -19,5 +20,6 @@ class UserManager
 
         void addNewUser(User user);
         void createUserFiles(QString path);
+        QString createUserId();
 };
 

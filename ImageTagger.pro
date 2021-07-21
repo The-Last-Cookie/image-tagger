@@ -16,6 +16,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        StringCalc/binary.cpp \
+        StringCalc/converter.cpp \
+        StringCalc/decimal.cpp \
+        StringCalc/example.cpp \
+        StringCalc/hexadecimal.cpp \
+        StringCalc/stringcalc.cpp \
         accesscontrolsystem.cpp \
         databasemanager.cpp \
         logger.cpp \
@@ -26,6 +32,8 @@ SOURCES += \
         usermanager.cpp
 
 HEADERS += \
+    StringCalc/converter.h \
+    StringCalc/stringcalc.h \
     accesscontrolsystem.h \
     databasemanager.h \
     logger.h \
@@ -46,3 +54,7 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    StringCalc/LICENCE.md \
+    StringCalc/README.md
