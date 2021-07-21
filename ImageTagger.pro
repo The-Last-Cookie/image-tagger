@@ -19,7 +19,6 @@ SOURCES += \
         StringCalc/binary.cpp \
         StringCalc/converter.cpp \
         StringCalc/decimal.cpp \
-        StringCalc/example.cpp \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
         accesscontrolsystem.cpp \
