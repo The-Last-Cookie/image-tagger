@@ -173,3 +173,24 @@ void UserManager::createUserFiles(QString path)
     // Create folder "logs" for saving logs
     dir.mkpath("logs");
 }
+
+QString UserManager::createUserId()
+{
+    QFile file;
+    file.setFileName("data/users.json");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonArray users = jsonObject["users"].toArray();
+
+    QJsonValue lastUser = users.last();
+    QString id = lastUser["id"].toString();
+
+    QString newId = QString::fromStdString(StringCalc::Decimal::add(id.toStdString(), "1"));
+
+    return newId;
+}
