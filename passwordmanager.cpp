@@ -4,7 +4,7 @@ PasswordManager::PasswordManager()
 {
     m_minLength = 8;
     m_minNumUpper = 3;
-    m_minNumUpper = 3;
+    m_minNumLower = 3;
     m_specialChars = "!%$&/\\+#*";
 }
 
@@ -29,7 +29,7 @@ bool PasswordManager::checkPassword(QString password)
             break;
         }
     }
-    if (numUpper <= m_minNumUpper) {
+    if (numUpper < m_minNumUpper) {
         return false;
     }
 
@@ -43,7 +43,7 @@ bool PasswordManager::checkPassword(QString password)
             break;
         }
     }
-    if (numLower <= m_minNumLower) {
+    if (numLower < m_minNumLower) {
         return false;
     }
 
