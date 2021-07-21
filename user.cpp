@@ -12,7 +12,7 @@ User::~User()
 
 void User::setName(QString name)
 {
-    m_id = name;
+    m_name = name;
 }
 
 void User::setId(QString id)
@@ -22,12 +22,12 @@ void User::setId(QString id)
 
 void User::setPassword(QString password)
 {
-    m_id = password;
+    m_password = password;
 }
 
 void User::setPath(QString path)
 {
-    m_id = path;
+    m_path = path;
 }
 
 QString User::getName()
