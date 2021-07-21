@@ -212,6 +212,10 @@ QString UserManager::createUserPath()
 
 bool UserManager::usernameIsValid(QString username)
 {
+    if (username.isEmpty()) {
+        return false;
+    }
+
     // Read in data
     QFile file;
     file.setFileName("data/users.json");
@@ -222,11 +226,16 @@ bool UserManager::usernameIsValid(QString username)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    QJsonArray users = jsonObject["users"].toArray();
+    QJsonValue usersKey = jsonObject["users"];
 
+    if (usersKey.isNull()) {
+        return true;
+    }
+
+    QJsonArray users = usersKey.toArray();
     bool usernameExists = false;
     for (int i = 0; i < users.size(); i++) {
-        if (users.at(i) == username) {
+        if (users.at(i)["name"] == username) {
             usernameExists = true;
             break;
         }
