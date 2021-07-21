@@ -17,6 +17,8 @@ class DatabaseManager
         bool openConnection(QString path);
 
         void setPort(int port);
+        void setHostname(QString hostname);
+        void setUsername(QString username);
 
         bool deleteDatabase(QString path);
 
@@ -28,5 +30,7 @@ class DatabaseManager
         QSqlDatabase m_db;
         bool m_isOpen;
         int m_port;
+        QString m_hostname;
+        QString m_username;
 };
 
