@@ -222,9 +222,16 @@ bool UserManager::usernameIsValid(QString username)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    QStringList keys = jsonObject.keys();
+    QJsonArray users = jsonObject["users"].toArray();
 
-    if (keys.contains(username)) {
+    bool usernameExists = false;
+    for (int i = 0; i < users.size(); i++) {
+        if (users.at(i) == username) {
+            usernameExists = true;
+            break;
+        }
+    }
+    if (usernameExists) {
         return false;
     }
 
