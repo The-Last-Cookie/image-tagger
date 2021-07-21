@@ -2,10 +2,12 @@
 
 AccessControlSystem::AccessControlSystem()
 {
+    Logger l("");
+
     // If not available, create users.json
     QFile file;
     file.setFileName("data/users.json");
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
         QJsonObject jsonObject;
         jsonObject.insert("users", QJsonArray());
 
@@ -16,8 +18,9 @@ AccessControlSystem::AccessControlSystem()
 
         QTextStream out(&file);
         out << bytes;
-    }
 
+        l.info("Created file users.json");
+    }
     file.close();
 }
 

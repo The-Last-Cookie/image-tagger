@@ -9,6 +9,7 @@
 #include <QJsonValue>
 #include <QTextStream>
 
+#include "logger.h"
 #include "passwordmanager.h"
 #include "usermanager.h"
 
