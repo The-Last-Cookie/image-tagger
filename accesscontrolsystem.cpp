@@ -50,3 +50,35 @@ bool AccessControlSystem::createUser(QString name, QString password)
 
     return true;
 }
+
+bool AccessControlSystem::deleteUser()
+{
+    return false;
+}
+
+bool AccessControlSystem::login()
+{
+    return false;
+}
+bool AccessControlSystem::logout()
+{
+    return false;
+}
+
+bool AccessControlSystem::changePassword()
+{
+    return false;
+}
+bool AccessControlSystem::validateUser()
+{
+    return false;
+}
+
+void AccessControlSystem::encryptFiles(QString path)
+{
+
+}
+void AccessControlSystem::decryptFiles(QString path)
+{
+
+}
