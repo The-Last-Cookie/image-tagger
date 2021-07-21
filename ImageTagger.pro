@@ -21,6 +21,7 @@ SOURCES += \
         logger.cpp \
         main.cpp \
         passwordmanager.cpp \
+        settingsmanager.cpp \
         user.cpp \
         usermanager.cpp
 
@@ -29,6 +30,7 @@ HEADERS += \
     databasemanager.h \
     logger.h \
     passwordmanager.h \
+    settingsmanager.h \
     user.h \
     usermanager.h
 
