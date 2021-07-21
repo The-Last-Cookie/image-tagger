@@ -14,7 +14,7 @@ void UserManager::addNewUser(User user)
 {
     QFile file;
     file.setFileName("data/users.json");
-    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
 
@@ -40,7 +40,6 @@ void UserManager::addNewUser(User user)
         QTextStream out(&file);
         out << bytes;
     }
-
     file.close();
 }
 
