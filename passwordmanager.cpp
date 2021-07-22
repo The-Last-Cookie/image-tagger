@@ -8,7 +8,7 @@ PasswordManager::PasswordManager()
         QJsonObject jsonObject;
         jsonObject.insert("minLength", QJsonValue("8"));
         jsonObject.insert("minNumUpper", QJsonValue("3"));
-        jsonObject.insert("minNumUpper", QJsonValue("3"));
+        jsonObject.insert("minNumLower", QJsonValue("3"));
         jsonObject.insert("specialChars", QJsonValue("!%$&/\\+#*"));
 
         QJsonDocument jsonDoc;
