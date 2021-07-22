@@ -65,4 +65,5 @@ The full documentation can be found [here](https://the-last-cookie.github.io/ima
 
 ## 5. External sources
 - [Qt Homepage](https://qt.io)
+- [StringCalc v1.3](https://github.com/The-Last-Cookie/stringcalc)
 - [SQLite3 Library](https://sqlite.org/index.html)
