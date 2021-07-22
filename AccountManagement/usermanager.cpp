@@ -250,7 +250,7 @@ bool UserManager::usernameIsValid(QString username)
     return true;
 }
 
-QString retrieveHashFromUser(QString username)
+QString UserManager::retrieveHashFromUser(QString username)
 {
     if (username.isEmpty()) {
         return "";
@@ -280,7 +280,7 @@ QString retrieveHashFromUser(QString username)
     return "";
 }
 
-QString retrievePathFromUser(QString username)
+QString UserManager::retrievePathFromUser(QString username)
 {
     if (username.isEmpty()) {
         return "";
