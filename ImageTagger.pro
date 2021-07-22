@@ -16,30 +16,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AccountManagement/accesscontrolsystem.cpp \
+        AccountManagement/passwordmanager.cpp \
+        AccountManagement/user.cpp \
+        AccountManagement/usermanager.cpp \
         StringCalc/binary.cpp \
         StringCalc/converter.cpp \
         StringCalc/decimal.cpp \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
-        accesscontrolsystem.cpp \
         databasemanager.cpp \
         logger.cpp \
         main.cpp \
-        passwordmanager.cpp \
         settingsmanager.cpp \
-        user.cpp \
-        usermanager.cpp
 
 HEADERS += \
+    AccountManagement/accesscontrolsystem.h \
+    AccountManagement/passwordmanager.h \
+    AccountManagement/user.h \
+    AccountManagement/usermanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
-    accesscontrolsystem.h \
     databasemanager.h \
     logger.h \
-    passwordmanager.h \
-    settingsmanager.h \
-    user.h \
-    usermanager.h
 
 RESOURCES += qml.qrc
 

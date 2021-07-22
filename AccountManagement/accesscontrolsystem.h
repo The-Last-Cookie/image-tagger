@@ -10,8 +10,8 @@
 #include <QTextStream>
 
 #include "logger.h"
-#include "passwordmanager.h"
-#include "usermanager.h"
+#include "AccountManagement/passwordmanager.h"
+#include "AccountManagement/usermanager.h"
 
 class AccessControlSystem : public QObject
 {

@@ -7,7 +7,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "user.h"
+#include "AccountManagement/user.h"
 #include "databasemanager.h"
 #include "settingsmanager.h"
 #include "StringCalc/stringcalc.h"
