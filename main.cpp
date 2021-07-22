@@ -4,7 +4,7 @@
 #include <QDir>
 
 #include "logger.h"
-#include "accesscontrolsystem.h"
+#include "AccountManagement/accesscontrolsystem.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,5 +33,10 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    return app.exec();
+    int currentExitCode = app.exec();
+
+    acs.logout();
+
+    l.info("Shutting down application");
+    return currentExitCode;
 }
