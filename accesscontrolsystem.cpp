@@ -43,7 +43,7 @@ bool AccessControlSystem::createUser(QString name, QString password)
     User user;
     user.setName(name);
     user.setId(m_um.createUserId());
-    user.setPassword(password);
+    user.setPassword(m_pwm.hashPassword(password));
     user.setPath(m_um.createUserPath());
     m_um.addNewUser(user);
 
