@@ -6,60 +6,64 @@ import "uicomponents" as UIComponents
 Item {
     id: root
 
-    UIComponents.Sidebar {
+    Rectangle {
         id: sidebar
-        width: 20
+        width: 100
         height: parent.height
+        anchors.left: parent.left
+        color: "blue"
 
-        Label {
-            text: "Aa"
-            font.pixelSize: 96
+        StackView {
+            id: content
+            initialItem: "qrc:/HomePage.qml"
+            anchors.left: sidebar.right
+        }
+
+        Column {
             anchors.fill: parent
-            verticalAlignment: Label.AlignVCenter
-            horizontalAlignment: Label.AlignHCenter
-        }
-    }
+            spacing: 5
 
-    StackView {
-        id: content
-        initialItem: homepage
-        anchors.fill: parent
-
-        HomePage {
-            id: homepage
-
-        }
-
-        TagPage {
-            id: tagpage
-
-            UIComponents.Searchbar {
-
+            Button {
+                text: qsTr("Home")
+                onClicked: {
+                    content.replace("qrc:/HomePage.qml", StackView.Immediate)
+                }
             }
 
-            UIComponents.FileListView {
-
+            Button {
+                text: qsTr("Tags")
+                onClicked: {
+                    content.replace("qrc:/TagPage.qml", StackView.Immediate)
+                }
             }
-        }
 
-        GroupPage {
-            id: grouppage
+            Button {
+                text: qsTr("Groups")
+                onClicked: {
+                    content.replace("qrc:/GroupPage.qml", StackView.Immediate)
+                }
+            }
 
-        }
+            Button {
+                text: qsTr("Auhors")
+                onClicked: {
+                    content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
+                }
+            }
 
-        AuthorPage {
-            id: authorpage
+            Button {
+                text: qsTr("Account")
+                onClicked: {
+                    content.replace("qrc:/AccountPage.qml", StackView.Immediate)
+                }
+            }
 
-        }
-
-        AccountPage {
-            id: accountpage
-
-        }
-
-        SettingsPage {
-            id: settingspage
-
+            Button {
+                text: qsTr("Settings")
+                onClicked: {
+                    content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
+                }
+            }
         }
     }
 }

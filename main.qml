@@ -13,17 +13,26 @@ Window {
 
     StackView {
         id: frame
-        initialItem: loginPage
+        initialItem: "qrc:/LoginPage.qml"
         anchors.fill: parent
 
         property alias frame: frame
 
-        LoginPage {
-            id: loginPage
+        onFrameChanged: {
+            /*if (loginPage.visible) {
+                loginPage.visible = false
+                mainPage.visible = true
+            }*/
         }
 
-        MainPage {
+        /*MainPage {
             id: mainPage
+
+            visible: false
         }
+
+        LoginPage {
+            id: loginPage
+        }*/
     }
 }
