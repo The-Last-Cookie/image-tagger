@@ -4,8 +4,9 @@
         <file>LoginPage.qml</file>
         <file>MainPage.qml</file>
     </qresource>
-    <qresource prefix="/UIComponents">
+    <qresource prefix="/uicomponents">
         <file>Drawer.qml</file>
         <file>FileListView.qml</file>
+        <file>LabelError.qml</file>
     </qresource>
 </RCC>

@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         AccountManagement/accesscontrolsystem.cpp \
         AccountManagement/passwordmanager.cpp \
-    AccountManagement/session.cpp \
+        AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
         StringCalc/binary.cpp \
@@ -29,7 +29,7 @@ SOURCES += \
         databasemanager.cpp \
         logger.cpp \
         main.cpp \
-        settingsmanager.cpp \
+        settingsmanager.cpp
 
 HEADERS += \
     AccountManagement/accesscontrolsystem.h \
@@ -40,7 +40,7 @@ HEADERS += \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     databasemanager.h \
-    logger.h \ \
+    logger.h \
     settingsmanager.h
 
 RESOURCES += qml.qrc

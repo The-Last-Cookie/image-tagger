@@ -2,6 +2,8 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 
+import "uicomponents" as UIComponents
+
 Item {
     id: root
 
@@ -127,27 +129,16 @@ Item {
                 }
             }
 
-            Rectangle {
+            UIComponents.LabelError {
                 id: infoUserLoginNotSuccesful
                 height: 20
-                color: "#a5314c"
-                border.width: 2
-                border.color: "red"
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.right: parent.right
                 anchors.rightMargin: 30
                 visible: false
 
-                Text {
-                    text: qsTr("Username or password not correct.")
-                    textFormat: Text.MarkdownText
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    color: "white"
-                    padding: 5
-                    font.pointSize: 7
-                }
+                textLabel: qsTr("Username or password not correct.")
             }
 
             Button {
@@ -172,26 +163,16 @@ Item {
                 }
             }
 
-            Rectangle {
+            UIComponents.LabelError {
                 id: infoLoginAsGuest
                 height: 20
-                color: "#a5314c"
-                border.width: 2
-                border.color: "red"
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.right: parent.right
                 anchors.rightMargin: 30
                 visible: false
 
-                Text {
-                    text: qsTr("Please be aware that your files will only be available as long as the application is running.")
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    color: "white"
-                    padding: 5
-                    font.pointSize: 7
-                }
+                textLabel: qsTr("Please be aware that your files will only be available as long as the application is running.")
             }
         }
 
@@ -309,33 +290,22 @@ Item {
                 }
             }
 
-            Rectangle {
+            UIComponents.LabelError {
                 id: infoUserCreationNotSuccesful
-                height: 55
-                color: "#a5314c"
-                border.width: 2
-                border.color: "red"
+                height: 60
                 anchors.left: parent.left
-                anchors.leftMargin: 10
+                anchors.leftMargin: 30
                 anchors.right: parent.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 30
                 visible: false
 
-                Text {
-                    text: qsTr(
-                        "It seems that either that username is already taken or that your password is not safe enough. A password has these constraints: "
-                        + "**at least " + acs.getPasswordMinLength() + " characters long**, "
-                        + "**at least " + acs.getPasswordMinNumUpper() + " uppercase letters**, "
-                        + "**at least " + acs.getPasswordMinNumLower() + " lowercase letters** and "
-                        + "**at least one special character** (" + acs.getPasswordSpecialChars() + ")."
-                    )
-                    textFormat: Text.MarkdownText
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    color: "white"
-                    padding: 5
-                    font.pointSize: 7
-                }
+                textLabel: qsTr(
+                    "It seems that either that username is already taken or that your password is not safe enough. A password has these constraints: "
+                    + "**at least " + acs.getPasswordMinLength() + " characters long**, "
+                    + "**at least " + acs.getPasswordMinNumUpper() + " uppercase letters**, "
+                    + "**at least " + acs.getPasswordMinNumLower() + " lowercase letters** and "
+                    + "**at least one special character** (" + acs.getPasswordSpecialChars() + ")."
+                )
             }
         }
     }
