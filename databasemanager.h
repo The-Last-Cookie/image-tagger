@@ -2,8 +2,9 @@
 
 #include <QString>
 #include <QFile>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlDriver>
 #include <QCoreApplication>
 
 #include "logger.h"

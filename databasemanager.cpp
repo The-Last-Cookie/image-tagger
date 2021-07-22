@@ -2,6 +2,7 @@
 
 DatabaseManager::DatabaseManager()
 {
+    m_isOpen = false;
     m_port = 0;
 }
 
