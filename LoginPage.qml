@@ -7,9 +7,6 @@ import "uicomponents" as UIComponents
 Item {
     id: root
 
-    property string defaultName: qsTr("Name")
-    property string defaultPassword: qsTr("Password")
-
     Rectangle {
         width: parent.width / 2
         height: parent.height / 1.5
@@ -49,10 +46,6 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (txtLogin.text == defaultName) {
-                        txtLogin.text = ""
-                    }
-
                     color = "black"
                 }
             }
@@ -76,10 +69,6 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (txtPasswordLogin.text == defaultName) {
-                        txtPasswordLogin.text = ""
-                    }
-
                     color = "black"
                     echoMode = TextInput.Password
                 }
@@ -210,10 +199,6 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (txtCreate.text == defaultName) {
-                        txtCreate.text = ""
-                    }
-
                     color = "black"
                 }
             }
@@ -237,10 +222,6 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (txtPasswordCreate.text == defaultName) {
-                        txtPasswordCreate.text = ""
-                    }
-
                     color = "black"
                     echoMode = TextInput.Password
                 }
