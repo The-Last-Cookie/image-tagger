@@ -34,6 +34,8 @@ class AccessControlSystem : public QObject
         void encryptFiles(QString path);
         void decryptFiles(QString path);
 
+        PasswordManager getPasswordManager();
+
     private:
         PasswordManager m_pwm;
         UserManager m_um;

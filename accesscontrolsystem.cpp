@@ -80,7 +80,13 @@ void AccessControlSystem::encryptFiles(QString path)
 {
 
 }
+
 void AccessControlSystem::decryptFiles(QString path)
 {
 
+}
+
+PasswordManager AccessControlSystem::getPasswordManager()
+{
+    return m_pwm;
 }
