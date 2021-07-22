@@ -6,9 +6,9 @@ PasswordManager::PasswordManager()
     file.setFileName("data/passwordRules.json");
     if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
         QJsonObject jsonObject;
-        jsonObject.insert("minLength", QJsonValue("8"));
-        jsonObject.insert("minNumUpper", QJsonValue("3"));
-        jsonObject.insert("minNumLower", QJsonValue("3"));
+        jsonObject.insert("minLength", QJsonValue(8));
+        jsonObject.insert("minNumUpper", QJsonValue(3));
+        jsonObject.insert("minNumLower", QJsonValue(3));
         jsonObject.insert("specialChars", QJsonValue("!%$&/\\+#*"));
 
         QJsonDocument jsonDoc;
