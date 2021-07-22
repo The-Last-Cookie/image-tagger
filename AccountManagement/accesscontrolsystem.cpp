@@ -61,10 +61,10 @@ bool AccessControlSystem::deleteUser()
 bool AccessControlSystem::login(QString username, QString password, bool isLoggedInAsGuest)
 {
     if (isLoggedInAsGuest) {
-        QString idAsPath = m_um.createUserId();
-        m_um.createUserFiles(idAsPath);
+        QString path = m_um.createUserPath();
+        m_um.createUserFiles(path);
 
-        return m_session.create(idAsPath, isLoggedInAsGuest);
+        return m_session.create(path, isLoggedInAsGuest);
     }
 
     if (m_um.usernameIsValid(username)) {
