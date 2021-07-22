@@ -120,9 +120,10 @@ Item {
                 onClicked: {
                     if (!acs.login(txtLogin.text, txtPasswordLogin.text, 0)) {
                         infoUserLoginNotSuccesful.visible = true
-                    } else {
-                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                        return
                     }
+
+                    frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
                 }
             }
 
@@ -151,7 +152,7 @@ Item {
 
             Button {
                 id: btnLoginGuest
-                text: "Login as guest"
+                text: qsTr("Login as guest")
                 width: parent.width / 3
                 height: parent.height / 6
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -160,6 +161,36 @@ Item {
                     if (acs.login("", "", 1)) {
                         frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
                     }
+                }
+
+                onHoveredChanged: {
+                    if (infoLoginAsGuest.visible) {
+                        infoLoginAsGuest.visible = false
+                    } else {
+                        infoLoginAsGuest.visible = true
+                    }
+                }
+            }
+
+            Rectangle {
+                id: infoLoginAsGuest
+                height: 20
+                color: "#a5314c"
+                border.width: 2
+                border.color: "red"
+                anchors.left: parent.left
+                anchors.leftMargin: 30
+                anchors.right: parent.right
+                anchors.rightMargin: 30
+                visible: false
+
+                Text {
+                    text: qsTr("Please be aware that your files will only be available as long as the application is running.")
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    color: "white"
+                    padding: 5
+                    font.pointSize: 7
                 }
             }
         }
@@ -270,9 +301,11 @@ Item {
                 onClicked: {
                     if (!acs.createUser(txtCreate.text, txtPasswordCreate.text)) {
                         infoUserCreationNotSuccesful.visible = true
-                    } else {
-                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                        return
                     }
+
+                    acs.login(txtCreate.text, txtPasswordCreate.text, 0)
+                    frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
                 }
             }
 
