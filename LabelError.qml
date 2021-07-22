@@ -30,5 +30,4 @@ Item {
             font.pointSize: 7
         }
     }
-
 }
