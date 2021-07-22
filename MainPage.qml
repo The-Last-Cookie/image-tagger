@@ -1,33 +1,65 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Controls 2.12
+
+import "uicomponents" as UIComponents
 
 Item {
     id: root
 
-    Rectangle {
-        width: parent.width
-        height: parent.height
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        color: "red"
-
-        Text {
-            text: "hello"
-            font.pointSize: 24
-        }
-    }
-
-    Drawer {
+    UIComponents.Drawer {
         id: sidebar
+        width: 20
+        height: parent.height
 
         Label {
-            id: content
-
             text: "Aa"
             font.pixelSize: 96
             anchors.fill: parent
             verticalAlignment: Label.AlignVCenter
             horizontalAlignment: Label.AlignHCenter
+        }
+    }
+
+    StackView {
+        id: content
+        initialItem: homepage
+        anchors.fill: parent
+
+        HomePage {
+            id: homepage
+
+        }
+
+        TagPage {
+            id: tagpage
+
+            UIComponents.Searchbar {
+
+            }
+
+            UIComponents.FileListView {
+
+            }
+        }
+
+        GroupPage {
+            id: grouppage
+
+        }
+
+        AuthorPage {
+            id: authorpage
+
+        }
+
+        AccountPage {
+            id: accountpage
+
+        }
+
+        SettingsPage {
+            id: settingspage
+
         }
     }
 }

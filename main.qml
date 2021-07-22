@@ -17,9 +17,13 @@ Window {
         anchors.fill: parent
 
         property alias frame: frame
-    }
 
-    LoginPage {
-        id: loginPage
+        LoginPage {
+            id: loginPage
+        }
+
+        MainPage {
+            id: mainPage
+        }
     }
 }

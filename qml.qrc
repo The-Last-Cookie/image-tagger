@@ -3,6 +3,12 @@
         <file>main.qml</file>
         <file>LoginPage.qml</file>
         <file>MainPage.qml</file>
+        <file>HomePage.qml</file>
+        <file>TagPage.qml</file>
+        <file>GroupPage.qml</file>
+        <file>AuthorPage.qml</file>
+        <file>AccountPage.qml</file>
+        <file>SettingsPage.qml</file>
     </qresource>
     <qresource prefix="/uicomponents">
         <file>Drawer.qml</file>
