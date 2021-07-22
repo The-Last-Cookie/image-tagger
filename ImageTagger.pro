@@ -38,7 +38,8 @@ HEADERS += \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     databasemanager.h \
-    logger.h \
+    logger.h \ \
+    settingsmanager.h
 
 RESOURCES += qml.qrc
 
