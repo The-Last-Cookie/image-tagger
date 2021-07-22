@@ -128,7 +128,9 @@ QString PasswordManager::hashPassword(QString password)
 
 bool PasswordManager::comparePasswordWithHash(QString password, QString hash)
 {
-    if (hash != hashPassword(password)) {
+    QByteArray passwordBytes = hashPassword(password).toLocal8Bit();
+    QByteArray hashBytes = hash.toLocal8Bit();
+    if (hashBytes != passwordBytes) {
         return false;
     }
 
