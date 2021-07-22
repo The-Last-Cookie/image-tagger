@@ -2,6 +2,10 @@
 
 #include <QString>
 #include <QCryptographicHash>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QTextStream>
 
 class PasswordManager
 {

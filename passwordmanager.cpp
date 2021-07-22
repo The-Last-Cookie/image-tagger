@@ -2,10 +2,62 @@
 
 PasswordManager::PasswordManager()
 {
-    m_minLength = 8;
-    m_minNumUpper = 3;
-    m_minNumLower = 3;
-    m_specialChars = "!%$&/\\+#*";
+    QFile file;
+    file.setFileName("data/passwordRules.json");
+    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
+        QJsonObject jsonObject;
+        jsonObject.insert("minLength", QJsonValue("8"));
+        jsonObject.insert("minNumUpper", QJsonValue("3"));
+        jsonObject.insert("minNumUpper", QJsonValue("3"));
+        jsonObject.insert("specialChars", QJsonValue("!%$&/\\+#*"));
+
+        QJsonDocument jsonDoc;
+        jsonDoc.setObject(jsonObject);
+
+        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
+
+        QTextStream out(&file);
+        out << bytes;
+
+        m_minLength = 8;
+        m_minNumUpper = 3;
+        m_minNumLower = 3;
+        m_specialChars = "!%$&/\\+#*";
+
+        file.close();
+        return;
+    }
+
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject passwordRules = jsonDoc.object();
+
+    if (passwordRules["minLength"].isNull()) {
+        m_minLength = 8;
+    } else {
+        m_minLength = passwordRules["minLength"].toInt();
+    }
+
+    if (passwordRules["minNumUpper"].isNull()) {
+        m_minNumUpper = 3;
+    } else {
+        m_minNumUpper = passwordRules["minNumUpper"].toInt();
+    }
+
+    if (passwordRules["minNumLower"].isNull()) {
+        m_minNumLower = 3;
+    } else {
+        m_minNumLower = passwordRules["minNumLower"].toInt();
+    }
+
+    if (passwordRules["specialChars"].isNull()) {
+        m_specialChars = "!%$&/\\+#*";
+    } else {
+        m_specialChars = passwordRules["specialChars"].toString();
+    }
 }
 
 PasswordManager::~PasswordManager()
