@@ -86,7 +86,23 @@ void AccessControlSystem::decryptFiles(QString path)
 
 }
 
-PasswordManager AccessControlSystem::getPasswordManager()
+int AccessControlSystem::getPasswordMinLength()
 {
-    return m_pwm;
+    return m_pwm.getMinLength();
 }
+
+int AccessControlSystem::getPasswordMinNumUpper()
+{
+    return m_pwm.getMinNumUpper();
+}
+
+int AccessControlSystem::getPasswordMinNumLower()
+{
+    return m_pwm.getMinNumLower();
+}
+
+QString AccessControlSystem::getPasswordSpecialChars()
+{
+    return m_pwm.getSpecialChars();
+}
+

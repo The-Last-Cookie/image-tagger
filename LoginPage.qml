@@ -252,7 +252,7 @@ Item {
 
             Rectangle {
                 id: infoUserCreationNotSuccesful
-                height: 50
+                height: 55
                 width: parent.width
                 color: "#a5314c"
                 border.width: 2
@@ -264,11 +264,19 @@ Item {
                 visible: false
 
                 Text {
-                    text: qsTr("It seems that either that username is already taken or that your password is not safe enough. A password has to at least contain ...")
+                    text: qsTr(
+                        "It seems that either that username is already taken or that your password is not safe enough. A password has these constraints: "
+                        + "**at least " + acs.getPasswordMinLength() + " characters long**, "
+                        + "**at least " + acs.getPasswordMinNumUpper() + " uppercase letters**, "
+                        + "**at least " + acs.getPasswordMinNumLower() + " lowercase letters** and "
+                        + "**at least one special character** (" + acs.getPasswordSpecialChars() + ")."
+                    )
+                    textFormat: Text.MarkdownText
                     width: parent.width
                     wrapMode: Text.WordWrap
                     color: "white"
                     padding: 5
+                    font.pointSize: 7
                 }
             }
         }
