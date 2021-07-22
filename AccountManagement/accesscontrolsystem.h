@@ -12,6 +12,7 @@
 #include "logger.h"
 #include "AccountManagement/passwordmanager.h"
 #include "AccountManagement/usermanager.h"
+#include "AccountManagement/session.h"
 
 class AccessControlSystem : public QObject
 {
@@ -25,11 +26,10 @@ class AccessControlSystem : public QObject
         bool createUser(QString name, QString password);
         bool deleteUser();
 
-        bool login();
+        bool login(QString name, QString password, bool isLoggedInAsGuest);
         bool logout();
 
         bool changePassword();
-        bool validateUser();
 
         void encryptFiles(QString path);
         void decryptFiles(QString path);
@@ -42,4 +42,5 @@ class AccessControlSystem : public QObject
     private:
         PasswordManager m_pwm;
         UserManager m_um;
+        Session m_session;
 };
