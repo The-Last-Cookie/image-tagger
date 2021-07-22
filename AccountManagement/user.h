@@ -8,7 +8,7 @@ class User
         User();
         ~User();
 
-        void setName(QString name);
+        void setUsername(QString username);
         void setId(QString id);
         void setPassword(QString password);
         void setPath(QString path);

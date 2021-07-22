@@ -23,11 +23,11 @@ class AccessControlSystem : public QObject
         ~AccessControlSystem();
 
     public slots:
-        bool createUser(QString name, QString password);
+        bool createUser(QString username, QString password);
         bool deleteUser();
 
         bool login(QString username, QString password, bool isLoggedInAsGuest);
-        bool logout();
+        void logout();
 
         bool changePassword();
 

@@ -10,9 +10,9 @@ User::~User()
 
 }
 
-void User::setName(QString name)
+void User::setUsername(QString username)
 {
-    m_name = name;
+    m_name = username;
 }
 
 void User::setId(QString id)

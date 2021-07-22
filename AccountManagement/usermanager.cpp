@@ -22,7 +22,7 @@ void UserManager::addNewUser(User user)
     QJsonObject jsonObject = jsonDoc.object();
 
     QJsonObject newUser;
-    newUser.insert("name", QJsonValue(user.getName()));
+    newUser.insert("username", QJsonValue(user.getName()));
     newUser.insert("id", QJsonValue(user.getId()));
     newUser.insert("password", QJsonValue(user.getPassword()));
     newUser.insert("path", QJsonValue(user.getPath()));
@@ -238,7 +238,7 @@ bool UserManager::usernameIsValid(QString username)
 
     bool usernameExists = false;
     for (int i = 0; i < users.size(); i++) {
-        if (users.at(i)["name"] == username) {
+        if (users.at(i)["username"] == username) {
             usernameExists = true;
             break;
         }
@@ -272,7 +272,7 @@ QString UserManager::retrieveHashFromUser(QString username)
     }
 
     for (int i = 0; i < users.size(); i++) {
-        if (users.at(i)["name"] == username) {
+        if (users.at(i)["username"] == username) {
             return users.at(i)["password"].toString();
         }
     }
@@ -302,7 +302,7 @@ QString UserManager::retrievePathFromUser(QString username)
     }
 
     for (int i = 0; i < users.size(); i++) {
-        if (users.at(i)["name"] == username) {
+        if (users.at(i)["username"] == username) {
             return users.at(i)["path"].toString();
         }
     }

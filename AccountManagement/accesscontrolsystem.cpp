@@ -29,9 +29,9 @@ AccessControlSystem::~AccessControlSystem()
 
 }
 
-bool AccessControlSystem::createUser(QString name, QString password)
+bool AccessControlSystem::createUser(QString username, QString password)
 {
-    if (!m_um.usernameIsValid(name)) {
+    if (!m_um.usernameIsValid(username)) {
         return false;
     }
 
@@ -41,7 +41,7 @@ bool AccessControlSystem::createUser(QString name, QString password)
 
     // Add new user to user file
     User user;
-    user.setName(name);
+    user.setUsername(username);
     user.setId(m_um.createUserId());
     user.setPassword(m_pwm.hashPassword(password));
     user.setPath(m_um.createUserPath());
@@ -80,9 +80,9 @@ bool AccessControlSystem::login(QString username, QString password, bool isLogge
     return m_session.create(path, isLoggedInAsGuest);
 }
 
-bool AccessControlSystem::logout()
+void AccessControlSystem::logout()
 {
-    return false;
+    m_session.destroy();
 }
 
 bool AccessControlSystem::changePassword()
