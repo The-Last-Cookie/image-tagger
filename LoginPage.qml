@@ -118,7 +118,34 @@ Item {
                 }
 
                 onClicked: {
-                    console.log(txtLogin.text + "\n" + txtPasswordLogin.text)
+                    if (!acs.login(txtLogin.text, txtPasswordLogin.text, 0)) {
+                        infoUserLoginNotSuccesful.visible = true
+                    } else {
+                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    }
+                }
+            }
+
+            Rectangle {
+                id: infoUserLoginNotSuccesful
+                height: 20
+                color: "#a5314c"
+                border.width: 2
+                border.color: "red"
+                anchors.left: parent.left
+                anchors.leftMargin: 30
+                anchors.right: parent.right
+                anchors.rightMargin: 30
+                visible: false
+
+                Text {
+                    text: qsTr("Username or password not correct.")
+                    textFormat: Text.MarkdownText
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    color: "white"
+                    padding: 5
+                    font.pointSize: 7
                 }
             }
 
@@ -130,7 +157,9 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 onClicked: {
-                    frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    if (acs.login("", "", 1)) {
+                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    }
                 }
             }
         }
@@ -250,7 +279,6 @@ Item {
             Rectangle {
                 id: infoUserCreationNotSuccesful
                 height: 55
-                width: parent.width
                 color: "#a5314c"
                 border.width: 2
                 border.color: "red"
