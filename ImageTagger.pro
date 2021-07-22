@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         AccountManagement/accesscontrolsystem.cpp \
         AccountManagement/passwordmanager.cpp \
+    AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
         StringCalc/binary.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 HEADERS += \
     AccountManagement/accesscontrolsystem.h \
     AccountManagement/passwordmanager.h \
+    AccountManagement/session.h \
     AccountManagement/user.h \
     AccountManagement/usermanager.h \
     StringCalc/converter.h \
