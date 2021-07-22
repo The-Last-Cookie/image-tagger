@@ -156,10 +156,10 @@ void UserManager::createUserFiles(QString path)
     SettingsManager settingsManager;
     QJsonObject settings = settingsManager.createDefaultSettingsFile();
 
-    QJsonDocument jsonDoc;
     QFile file;
-    file.setFileName("data/" + path);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    file.setFileName("data/" + path + "/settings.json");
+    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
+        QJsonDocument jsonDoc;
         jsonDoc.setObject(settings);
 
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
