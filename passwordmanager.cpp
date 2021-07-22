@@ -135,38 +135,6 @@ bool PasswordManager::comparePasswordWithHash(QString password, QString hash)
     return true;
 }
 
-void PasswordManager::setMinLength(int minLength)
-{
-    if (minLength < 1) {
-        return;
-    }
-
-    m_minLength = minLength;
-}
-
-void PasswordManager::setMinNumUpper(int minNumUpper)
-{
-    if (minNumUpper < 0) {
-        return;
-    }
-
-    m_minNumUpper = minNumUpper;
-}
-
-void PasswordManager::setMinNumLower(int minNumLower)
-{
-    if (minNumLower < 0) {
-        return;
-    }
-
-    m_minNumLower = minNumLower;
-}
-
-void PasswordManager::setSpecialChars(QString specialChars)
-{
-    m_specialChars = specialChars;
-}
-
 int PasswordManager::getMinLength()
 {
     return m_minLength;

@@ -17,11 +17,6 @@ class PasswordManager
         QString hashPassword(QString password);
         bool comparePasswordWithHash(QString password, QString hash);
 
-        void setMinLength(int minLength);
-        void setMinNumUpper(int minNumUpper);
-        void setMinNumLower(int minNumLower);
-        void setSpecialChars(QString specialChars);
-
         int getMinLength();
         int getMinNumUpper();
         int getMinNumLower();
