@@ -87,7 +87,7 @@ Item {
             }
 
             Rectangle {
-                id: textCreate
+                id: switchToCreate
                 height: 10
                 anchors.top: passwordLogin.bottom
                 anchors.left: passwordLogin.left
@@ -209,7 +209,7 @@ Item {
             }
 
             Rectangle {
-                id: textLogin
+                id: switchToLogin
                 anchors.top: passwordCreate.bottom
                 anchors.left: passwordCreate.left
                 anchors.topMargin: 10
@@ -242,7 +242,33 @@ Item {
                 }
 
                 onClicked: {
-                    acs.createUser(nameCreate.text, passwordCreate.text)
+                    if (!acs.createUser(nameCreate.text, passwordCreate.text)) {
+                        infoUserCreationNotSuccesful.visible = true
+                    } else {
+                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    }
+                }
+            }
+
+            Rectangle {
+                id: infoUserCreationNotSuccesful
+                height: 50
+                width: parent.width
+                color: "#a5314c"
+                border.width: 2
+                border.color: "red"
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                anchors.right: parent.right
+                anchors.rightMargin: 10
+                visible: false
+
+                Text {
+                    text: qsTr("It seems that either that username is already taken or that your password is not safe enough. A password has to at least contain ...")
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    color: "white"
+                    padding: 5
                 }
             }
         }
