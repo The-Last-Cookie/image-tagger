@@ -18,6 +18,11 @@ class PasswordManager
         void setMinNumLower(int minNumLower);
         void setSpecialChars(QString specialChars);
 
+        int getMinLength();
+        int getMinNumUpper();
+        int getMinNumLower();
+        QString getSpecialChars();
+
     private:
         int m_minLength;
         int m_minNumUpper;

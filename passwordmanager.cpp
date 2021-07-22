@@ -114,3 +114,23 @@ void PasswordManager::setSpecialChars(QString specialChars)
 {
     m_specialChars = specialChars;
 }
+
+int PasswordManager::getMinLength()
+{
+    return m_minLength;
+}
+
+int PasswordManager::getMinNumUpper()
+{
+    return m_minNumUpper;
+}
+
+int PasswordManager::getMinNumLower()
+{
+    return m_minNumLower;
+}
+
+QString PasswordManager::getSpecialChars()
+{
+    return m_specialChars;
+}
