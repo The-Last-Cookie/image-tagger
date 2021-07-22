@@ -26,7 +26,7 @@ class AccessControlSystem : public QObject
         bool createUser(QString name, QString password);
         bool deleteUser();
 
-        bool login(QString name, QString password, bool isLoggedInAsGuest);
+        bool login(QString username, QString password, bool isLoggedInAsGuest);
         bool logout();
 
         bool changePassword();

@@ -58,20 +58,27 @@ bool AccessControlSystem::deleteUser()
     return false;
 }
 
-bool AccessControlSystem::login()
+bool AccessControlSystem::login(QString username, QString password, bool isLoggedInAsGuest)
 {
-    return false;
+    if (m_um.usernameIsValid(username)) {
+        return false;
+    }
+
+    QString hash = m_um.retrieveHashFromUser(username);
+    if (!m_pwm.comparePasswordWithHash(password, hash)) {
+        return false;
+    }
+
+    QString path = m_um.retrievePathFromUser(username);
+    return m_session.create(path, isLoggedInAsGuest);
 }
+
 bool AccessControlSystem::logout()
 {
     return false;
 }
 
 bool AccessControlSystem::changePassword()
-{
-    return false;
-}
-bool AccessControlSystem::validateUser()
 {
     return false;
 }
@@ -105,4 +112,3 @@ QString AccessControlSystem::getPasswordSpecialChars()
 {
     return m_pwm.getSpecialChars();
 }
-

@@ -23,5 +23,8 @@ class UserManager
         QString createUserId();
         QString createUserPath();
 
+        QString retrieveHashFromUser(QString username);
+        QString retrievePathFromUser(QString username);
+
         bool usernameIsValid(QString username);
 };

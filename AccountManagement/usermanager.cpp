@@ -249,3 +249,63 @@ bool UserManager::usernameIsValid(QString username)
 
     return true;
 }
+
+QString retrieveHashFromUser(QString username)
+{
+    if (username.isEmpty()) {
+        return "";
+    }
+
+    QFile file;
+    file.setFileName("data/users.json");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonArray users = jsonObject["users"].toArray();
+
+    if (users.isEmpty()) {
+        return "";
+    }
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users.at(i)["name"] == username) {
+            return users.at(i)["password"].toString();
+        }
+    }
+
+    return "";
+}
+
+QString retrievePathFromUser(QString username)
+{
+    if (username.isEmpty()) {
+        return "";
+    }
+
+    QFile file;
+    file.setFileName("data/users.json");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonArray users = jsonObject["users"].toArray();
+
+    if (users.isEmpty()) {
+        return "";
+    }
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users.at(i)["name"] == username) {
+            return users.at(i)["path"].toString();
+        }
+    }
+
+    return "";
+}
