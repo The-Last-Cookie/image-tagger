@@ -6,7 +6,7 @@ import "uicomponents" as UIComponents
 Item {
     id: root
 
-    UIComponents.Drawer {
+    UIComponents.Sidebar {
         id: sidebar
         width: 20
         height: parent.height

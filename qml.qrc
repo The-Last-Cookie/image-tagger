@@ -11,8 +11,9 @@
         <file>SettingsPage.qml</file>
     </qresource>
     <qresource prefix="/uicomponents">
-        <file>Drawer.qml</file>
+        <file>Sidebar.qml</file>
         <file>FileListView.qml</file>
         <file>LabelError.qml</file>
+        <file>Searchbar.qml</file>
     </qresource>
 </RCC>
