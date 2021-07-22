@@ -8,9 +8,6 @@ Item {
     property string defaultName: qsTr("Name")
     property string defaultPassword: qsTr("Password")
 
-    property alias colsLogin: colsLogin
-    property alias colsCreate: colsCreate
-
     Rectangle {
         width: parent.width / 2
         height: parent.height / 1.5
@@ -32,7 +29,7 @@ Item {
             }
 
             TextField {
-                id: nameLogin
+                id: txtLogin
                 height: 30
                 width: parent.width / 2
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -50,8 +47,8 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (nameLogin.text == defaultName) {
-                        nameLogin.text = ""
+                    if (txtLogin.text == defaultName) {
+                        txtLogin.text = ""
                     }
 
                     color = "black"
@@ -59,7 +56,7 @@ Item {
             }
 
             TextField {
-                id: passwordLogin
+                id: txtPasswordLogin
                 height: 30
                 width: parent.width / 2
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -77,8 +74,8 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (passwordLogin.text == defaultName) {
-                        passwordLogin.text = ""
+                    if (txtPasswordLogin.text == defaultName) {
+                        txtPasswordLogin.text = ""
                     }
 
                     color = "black"
@@ -89,8 +86,8 @@ Item {
             Rectangle {
                 id: switchToCreate
                 height: 10
-                anchors.top: passwordLogin.bottom
-                anchors.left: passwordLogin.left
+                anchors.top: txtPasswordLogin.bottom
+                anchors.left: txtPasswordLogin.left
                 anchors.topMargin: 10
 
                 Text {
@@ -112,7 +109,7 @@ Item {
                 id: btnLogin
                 width: parent.width / 4
                 height: parent.height / 6
-                anchors.right: passwordLogin.right
+                anchors.right: txtPasswordLogin.right
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -121,7 +118,7 @@ Item {
                 }
 
                 onClicked: {
-                    console.log(nameLogin.text + "\n" + passwordLogin.text)
+                    console.log(txtLogin.text + "\n" + txtPasswordLogin.text)
                 }
             }
 
@@ -154,7 +151,7 @@ Item {
             }
 
             TextField {
-                id: nameCreate
+                id: txtCreate
                 height: 30
                 width: parent.width / 2
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -172,8 +169,8 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (nameCreate.text == defaultName) {
-                        nameCreate.text = ""
+                    if (txtCreate.text == defaultName) {
+                        txtCreate.text = ""
                     }
 
                     color = "black"
@@ -181,7 +178,7 @@ Item {
             }
 
             TextField {
-                id: passwordCreate
+                id: txtPasswordCreate
                 height: 30
                 width: parent.width / 2
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -199,8 +196,8 @@ Item {
                 }
 
                 onFocusChanged: {
-                    if (passwordCreate.text == defaultName) {
-                        passwordCreate.text = ""
+                    if (txtPasswordCreate.text == defaultName) {
+                        txtPasswordCreate.text = ""
                     }
 
                     color = "black"
@@ -210,8 +207,8 @@ Item {
 
             Rectangle {
                 id: switchToLogin
-                anchors.top: passwordCreate.bottom
-                anchors.left: passwordCreate.left
+                anchors.top: txtPasswordCreate.bottom
+                anchors.left: txtPasswordCreate.left
                 anchors.topMargin: 10
 
                 Text {
@@ -242,7 +239,7 @@ Item {
                 }
 
                 onClicked: {
-                    if (!acs.createUser(nameCreate.text, passwordCreate.text)) {
+                    if (!acs.createUser(txtCreate.text, txtPasswordCreate.text)) {
                         infoUserCreationNotSuccesful.visible = true
                     } else {
                         frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
