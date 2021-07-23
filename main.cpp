@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     if (dir.mkdir("data")) {
         l.info("Created directory data");
     }
-    if (dir.mkpath("logs")) {
+    if (dir.mkdir("logs")) {
         l.info("Created directory logs");
     }
 
