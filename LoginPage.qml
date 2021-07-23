@@ -1,6 +1,5 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import QtQuick.Controls.Styles 1.4
 
 import "uicomponents" as UIComponents
 
@@ -101,12 +100,7 @@ Item {
                 width: parent.width / 4
                 height: parent.height / 6
                 anchors.right: txtPasswordLogin.right
-
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("Login")
-                }
+                text: qsTr("Login")
 
                 onClicked: {
                     if (!acs.login(txtLogin.text, txtPasswordLogin.text, 0)) {
@@ -253,12 +247,7 @@ Item {
                 width: parent.width / 3
                 height: parent.height / 6
                 anchors.horizontalCenter: parent.horizontalCenter
-
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("Create new account")
-                }
+                text: qsTr("Create new account")
 
                 onClicked: {
                     if (!acs.createUser(txtCreate.text, txtPasswordCreate.text)) {
