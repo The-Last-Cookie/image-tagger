@@ -12,43 +12,34 @@ Item {
         }
     }
 
-    MouseArea {
-        height: parent.height
+    Rectangle {
+        id: sidebar
         width: 100
+        height: parent.height
+        anchors.left: parent.left
+        color: "blue"
 
-        onClicked: {
-            switchVisibilityOfExtendableSidebar()
-        }
+        MouseArea {
+            id: sideBarMouseArea
+            anchors.fill: parent
+            hoverEnabled: true
 
-        Rectangle {
-            id: sidebar
-            width: parent.width
-            height: parent.height
-            anchors.left: parent.left
-            color: "blue"
+            onHoveredChanged: {
+                if (sideBarMouseArea.containsMouse) {
+                    extendableSidebar.visible = true
+                }
 
-            Text {
-                text: "hello"
+                if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    extendableSidebar.visible = false
+                }
             }
 
-            StackView {
-                id: content
-                initialItem: "qrc:/HomePage.qml"
-                anchors.left: sidebar.right
+            onClicked: {
+                switchVisibilityOfExtendableSidebar()
             }
-        }
-
-        Rectangle {
-            id: extendableSidebar
-            anchors.left: sidebar.right
-            height: parent.height
-            width: frame.width
-            visible: false
 
             Column {
                 anchors.fill: parent
-                spacing: 2
-                z: 1
 
                 Button {
                     text: qsTr("Home")
@@ -94,6 +85,84 @@ Item {
                     text: qsTr("Settings")
                     onClicked: {
                         switchVisibilityOfExtendableSidebar()
+                        content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
+                    }
+                }
+            }
+        }
+
+        StackView {
+            id: content
+            initialItem: "qrc:/HomePage.qml"
+            anchors.left: sidebar.right
+        }
+    }
+
+    Rectangle {
+        id: extendableSidebar
+        anchors.left: sidebar.right
+        height: parent.height
+        width: frame.width
+        visible: false
+
+        MouseArea {
+            id: extendableSidebarMouseArea
+            anchors.fill: parent
+            hoverEnabled: true
+
+            onClicked: {
+                extendableSidebar.visible = false
+            }
+
+            Column {
+                anchors.fill: parent
+                spacing: 2
+                z: 1
+
+                Button {
+                    text: qsTr("Home")
+                    onClicked: {
+                        extendableSidebar.visible = false
+                        content.replace("qrc:/HomePage.qml", StackView.Immediate)
+                    }
+                }
+
+                Button {
+                    text: qsTr("Tags")
+                    onClicked: {
+                        extendableSidebar.visible = false
+                        content.replace("qrc:/TagPage.qml", StackView.Immediate)
+                    }
+                }
+
+                Button {
+                    text: qsTr("Groups")
+                    onClicked: {
+                        extendableSidebar.visible = false
+                        content.replace("qrc:/GroupPage.qml", StackView.Immediate)
+                    }
+                }
+
+                Button {
+                    text: qsTr("Auhors")
+                    onClicked: {
+                        extendableSidebar.visible = false
+                        content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
+                    }
+                }
+
+                Button {
+                    text: qsTr("Account")
+                    onClicked: {
+                        extendableSidebar.visible = false
+                        content.replace("qrc:/AccountPage.qml", StackView.Immediate)
+                    }
+                }
+
+                Button {
+                    text: qsTr("Settings")
+                    onClicked: {
+                        extendableSidebar.visible = false
                         content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
                     }
                 }
