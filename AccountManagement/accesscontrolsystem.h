@@ -24,7 +24,7 @@ class AccessControlSystem : public QObject
 
     public slots:
         bool createUser(QString username, QString password);
-        bool deleteUser();
+        void deleteUser();
 
         bool login(QString username, QString password, bool isLoggedInAsGuest);
         void logout();

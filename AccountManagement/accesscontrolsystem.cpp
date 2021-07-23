@@ -53,9 +53,43 @@ bool AccessControlSystem::createUser(QString username, QString password)
     return true;
 }
 
-bool AccessControlSystem::deleteUser()
+void AccessControlSystem::deleteUser()
 {
-    return false;
+    m_um.deleteUserFiles(m_session.getPath());
+
+    // Delete user from users.json
+    QFile file;
+    file.setFileName("data/users.json");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonArray users = jsonObject["users"].toArray();
+
+    if (users.isEmpty()) {
+        return;
+    }
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users.at(i)["path"] == m_session.getPath()) {
+            users.removeAt(i);
+            break;
+        }
+    }
+
+    jsonObject.insert("users", QJsonValue(users));
+
+    QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
+
+    file.open(QIODevice::WriteOnly | QIODevice::ExistingOnly | QIODevice::Text);
+    QTextStream out(&file);
+    out << bytes;
+    file.close();
+
+    m_session.destroy();
 }
 
 bool AccessControlSystem::login(QString username, QString password, bool isLoggedInAsGuest)
@@ -82,6 +116,10 @@ bool AccessControlSystem::login(QString username, QString password, bool isLogge
 
 void AccessControlSystem::logout()
 {
+    if (m_session.isLoggedInAsGuest()) {
+        m_um.deleteUserFiles(m_session.getPath());
+    }
+
     m_session.destroy();
 }
 

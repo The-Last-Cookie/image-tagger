@@ -216,7 +216,7 @@ QString UserManager::createUserPath()
 
 void UserManager::deleteUserFiles(QString path)
 {
-    QFile::remove("data/" + path);
+    QFile::remove(QCoreApplication::applicationDirPath() + "/data/" + path);
 }
 
 bool UserManager::usernameIsValid(QString username)
