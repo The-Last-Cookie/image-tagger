@@ -37,67 +37,67 @@ Item {
             onClicked: {
                 switchVisibilityOfExtendableSidebar()
             }
+        }
 
-            Column {
-                anchors.fill: parent
+        Column {
+            anchors.fill: parent
 
-                Button {
-                    text: qsTr("Home")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/HomePage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Home")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/HomePage.qml", StackView.Immediate)
                 }
+            }
 
-                Button {
-                    text: qsTr("Tags")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/TagPage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Tags")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/TagPage.qml", StackView.Immediate)
                 }
+            }
 
-                Button {
-                    text: qsTr("Groups")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/GroupPage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Groups")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/GroupPage.qml", StackView.Immediate)
                 }
+            }
 
-                Button {
-                    text: qsTr("Auhors")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Auhors")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
                 }
+            }
 
-                Button {
-                    text: qsTr("Account")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/AccountPage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Account")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/AccountPage.qml", StackView.Immediate)
                 }
+            }
 
-                Button {
-                    text: qsTr("Settings")
-                    onClicked: {
-                        switchVisibilityOfExtendableSidebar()
-                        content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
-                    }
+            Button {
+                text: qsTr("Settings")
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
                 }
             }
         }
+    }
 
-        StackView {
-            id: content
-            initialItem: "qrc:/HomePage.qml"
-            anchors.left: sidebar.right
-            height: parent.height
-            width: parent.width
-        }
+    StackView {
+        id: content
+        initialItem: "qrc:/HomePage.qml"
+        anchors.left: sidebar.right
+        anchors.right: parent.right
+        height: parent.height
     }
 
     Rectangle {
