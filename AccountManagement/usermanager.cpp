@@ -168,9 +168,6 @@ void UserManager::createUserFiles(QString path)
         out << bytes;
     }
     file.close();
-
-    // Create folder "logs" for saving logs
-    dir.mkpath("logs");
 }
 
 QString UserManager::createUserId()
@@ -216,7 +213,7 @@ QString UserManager::createUserPath()
 
 void UserManager::deleteUserFiles(QString path)
 {
-    QFile::remove(QCoreApplication::applicationDirPath() + "/data/" + path);
+    QFile::remove(QDir::currentPath() + "/data/" + path);
 }
 
 bool UserManager::usernameIsValid(QString username)

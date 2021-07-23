@@ -1,5 +1,7 @@
 #include "logger.h"
 
+#include <QDebug>
+
 Logger::Logger(QString path) : m_path(path)
 {
 
@@ -15,7 +17,7 @@ void Logger::info(QString message)
     QString date = getDate("YYYY-MM-DD");
 
     QFile file;
-    file.setFileName(m_path + "log_" + date + ".txt");
+    file.setFileName(m_path + "/logs/" + "log_" + date + ".txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         QTextStream out(&file);
 
@@ -32,7 +34,7 @@ void Logger::warning(QString message)
     QString date = getDate("YYYY-MM-DD");
 
     QFile file;
-    file.setFileName(m_path + "log_" + date + ".txt");
+    file.setFileName(m_path + "/logs/" + "log_" + date + ".txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         QTextStream out(&file);
 
@@ -49,7 +51,7 @@ void Logger::error(QString message)
     QString date = getDate("YYYY-MM-DD");
 
     QFile file;
-    file.setFileName(m_path + "log_" + date + ".txt");
+    file.setFileName(m_path + "/logs/" + "log_" + date + ".txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         QTextStream out(&file);
 

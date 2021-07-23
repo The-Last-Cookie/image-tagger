@@ -5,7 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlDriver>
-#include <QCoreApplication>
+#include <QDir>
 
 #include "logger.h"
 

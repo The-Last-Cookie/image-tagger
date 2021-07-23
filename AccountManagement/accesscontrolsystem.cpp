@@ -2,7 +2,7 @@
 
 AccessControlSystem::AccessControlSystem()
 {
-    Logger l("");
+    Logger l(QDir::currentPath());
 
     // If not available, create users.json
     QFile file;

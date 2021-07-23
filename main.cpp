@@ -8,17 +8,19 @@
 
 int main(int argc, char *argv[])
 {
-    Logger l("");
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication app(argc, argv);
+
+    Logger l(QDir::currentPath());
     l.info("Starting application");
 
-    QDir dataDir;
-    if (dataDir.mkdir("data")) {
+    QDir dir;
+    if (dir.mkdir("data")) {
         l.info("Created directory data");
     }
-
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-    QGuiApplication app(argc, argv);
+    if (dir.mkpath("logs")) {
+        l.info("Created directory logs");
+    }
 
     AccessControlSystem acs;
 

@@ -58,7 +58,7 @@ void DatabaseManager::setUsername(QString username)
 
 bool DatabaseManager::deleteDatabase(QString path)
 {
-    return QFile::remove(QCoreApplication::applicationDirPath() + "/data/" + path + "/data.sqlite");
+    return QFile::remove(QDir::currentPath() + "/data/" + path + "/data.sqlite");
 }
 
 bool DatabaseManager::isOpen()
