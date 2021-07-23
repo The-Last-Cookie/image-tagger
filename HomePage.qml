@@ -13,7 +13,7 @@ Item {
         Rectangle {
             id: tagListing
 
-            Text { text:"Here is MainPage" }
+            Text { text:"Here is HomePage" }
         }
 
         Rectangle {

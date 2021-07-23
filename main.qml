@@ -17,22 +17,5 @@ Window {
         anchors.fill: parent
 
         property alias frame: frame
-
-        onFrameChanged: {
-            /*if (loginPage.visible) {
-                loginPage.visible = false
-                mainPage.visible = true
-            }*/
-        }
-
-        /*MainPage {
-            id: mainPage
-
-            visible: false
-        }
-
-        LoginPage {
-            id: loginPage
-        }*/
     }
 }
