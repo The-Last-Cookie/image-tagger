@@ -95,6 +95,8 @@ Item {
             id: content
             initialItem: "qrc:/HomePage.qml"
             anchors.left: sidebar.right
+            height: parent.height
+            width: parent.width
         }
     }
 
