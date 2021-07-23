@@ -1,7 +1,5 @@
 #include "logger.h"
 
-#include <QDebug>
-
 Logger::Logger(QString path) : m_path(path)
 {
 
