@@ -37,3 +37,13 @@ void Session::destroy()
     m_isLoggedInAsGuest = false;
     m_path = "";
 }
+
+QString Session::getPath()
+{
+    return m_path;
+}
+
+bool Session::isLoggedInAsGuest()
+{
+    return m_isLoggedInAsGuest;
+}

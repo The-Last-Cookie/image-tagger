@@ -214,6 +214,11 @@ QString UserManager::createUserPath()
     return newFileName;
 }
 
+void UserManager::deleteUserFiles(QString path)
+{
+    QFile::remove("data/" + path);
+}
+
 bool UserManager::usernameIsValid(QString username)
 {
     if (username.isEmpty()) {
