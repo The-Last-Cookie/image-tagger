@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 Item {
     id: root
 
+    property string defaultText: "text"
+
     TextField {
         height: 30
         width: parent.width
@@ -12,7 +14,7 @@ Item {
         color: "grey"
         selectByMouse: true
         selectedTextColor: "white"
-        placeholderText: qsTr("Name")
+        placeholderText: defaultText
         enabled: true
 
         background: Rectangle {
