@@ -55,11 +55,11 @@ Item {
                 }
 
                 onHoveredChanged: {
-                    if (sideBarMouseArea.containsMouse) {
+                    if (this.hovered) {
                         extendableSidebar.visible = true
                     }
 
-                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    if (!this.hovered && !extendableSidebar.visible) {
                         extendableSidebar.visible = false
                     }
                 }
@@ -77,11 +77,11 @@ Item {
                 }
 
                 onHoveredChanged: {
-                    if (sideBarMouseArea.containsMouse) {
+                    if (this.hovered) {
                         extendableSidebar.visible = true
                     }
 
-                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    if (!this.hovered && !extendableSidebar.visible) {
                         extendableSidebar.visible = false
                     }
                 }
@@ -97,6 +97,16 @@ Item {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/GroupPage.qml", StackView.Immediate)
                 }
+
+                onHoveredChanged: {
+                    if (this.hovered) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!this.hovered && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
+                }
             }
 
             Button {
@@ -111,11 +121,11 @@ Item {
                 }
 
                 onHoveredChanged: {
-                    if (sideBarMouseArea.containsMouse) {
+                    if (this.hovered) {
                         extendableSidebar.visible = true
                     }
 
-                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    if (!this.hovered && !extendableSidebar.visible) {
                         extendableSidebar.visible = false
                     }
                 }
@@ -138,11 +148,11 @@ Item {
                 }
 
                 onHoveredChanged: {
-                    if (sideBarMouseArea.containsMouse) {
+                    if (this.hovered) {
                         extendableSidebar.visible = true
                     }
 
-                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    if (!this.hovered && !extendableSidebar.visible) {
                         extendableSidebar.visible = false
                     }
                 }
@@ -160,11 +170,11 @@ Item {
                 }
 
                 onHoveredChanged: {
-                    if (sideBarMouseArea.containsMouse) {
+                    if (this.hovered) {
                         extendableSidebar.visible = true
                     }
 
-                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                    if (!this.hovered && !extendableSidebar.visible) {
                         extendableSidebar.visible = false
                     }
                 }
