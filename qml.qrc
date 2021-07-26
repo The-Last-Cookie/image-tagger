@@ -9,10 +9,13 @@
         <file>AuthorPage.qml</file>
         <file>AccountPage.qml</file>
         <file>SettingsPage.qml</file>
+        <file>LoginForm.qml</file>
+        <file>CreateAccountForm.qml</file>
     </qresource>
     <qresource prefix="/uicomponents">
         <file>FileListView.qml</file>
         <file>LabelError.qml</file>
         <file>Searchbar.qml</file>
+        <file>FileViewTemplate.qml</file>
     </qresource>
 </RCC>
