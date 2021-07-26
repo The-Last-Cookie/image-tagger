@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 Item {
     id: root
@@ -39,27 +40,59 @@ Item {
             }
         }
 
-        Column {
-            anchors.fill: parent
+        ColumnLayout {
+            spacing: 5
 
             Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
                 text: qsTr("Home")
+
                 onClicked: {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/HomePage.qml", StackView.Immediate)
                 }
-            }
 
-            Button {
-                text: qsTr("Tags")
-                onClicked: {
-                    switchVisibilityOfExtendableSidebar()
-                    content.replace("qrc:/TagPage.qml", StackView.Immediate)
+                onHoveredChanged: {
+                    if (sideBarMouseArea.containsMouse) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
                 }
             }
 
             Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
+                text: qsTr("Tags")
+
+                onClicked: {
+                    switchVisibilityOfExtendableSidebar()
+                    content.replace("qrc:/TagPage.qml", StackView.Immediate)
+                }
+
+                onHoveredChanged: {
+                    if (sideBarMouseArea.containsMouse) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
+                }
+            }
+
+            Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
                 text: qsTr("Groups")
+
                 onClicked: {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/GroupPage.qml", StackView.Immediate)
@@ -67,26 +100,73 @@ Item {
             }
 
             Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
                 text: qsTr("Auhors")
+
                 onClicked: {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
                 }
+
+                onHoveredChanged: {
+                    if (sideBarMouseArea.containsMouse) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
+                }
             }
+        }
+
+        ColumnLayout {
+            anchors.bottom: parent.bottom
+            spacing: 5
 
             Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
                 text: qsTr("Account")
+
                 onClicked: {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/AccountPage.qml", StackView.Immediate)
                 }
+
+                onHoveredChanged: {
+                    if (sideBarMouseArea.containsMouse) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
+                }
             }
 
             Button {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                hoverEnabled: true
                 text: qsTr("Settings")
+
                 onClicked: {
                     switchVisibilityOfExtendableSidebar()
                     content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
+                }
+
+                onHoveredChanged: {
+                    if (sideBarMouseArea.containsMouse) {
+                        extendableSidebar.visible = true
+                    }
+
+                    if (!sideBarMouseArea.containsMouse && !extendableSidebar.visible) {
+                        extendableSidebar.visible = false
+                    }
                 }
             }
         }
@@ -116,13 +196,17 @@ Item {
                 extendableSidebar.visible = false
             }
 
-            Column {
-                anchors.fill: parent
-                spacing: 2
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                spacing: 5
                 z: 1
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Home")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/HomePage.qml", StackView.Immediate)
@@ -130,7 +214,10 @@ Item {
                 }
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Tags")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/TagPage.qml", StackView.Immediate)
@@ -138,7 +225,10 @@ Item {
                 }
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Groups")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/GroupPage.qml", StackView.Immediate)
@@ -146,15 +236,29 @@ Item {
                 }
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Auhors")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/AuthorPage.qml", StackView.Immediate)
                     }
                 }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 30
+                anchors.bottom: parent.bottom
+                spacing: 5
+                z: 1
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Account")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/AccountPage.qml", StackView.Immediate)
@@ -162,7 +266,10 @@ Item {
                 }
 
                 Button {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 30
                     text: qsTr("Settings")
+
                     onClicked: {
                         extendableSidebar.visible = false
                         content.replace("qrc:/SettingsPage.qml", StackView.Immediate)
