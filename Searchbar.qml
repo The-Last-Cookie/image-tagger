@@ -9,7 +9,6 @@ Item {
     TextField {
         height: 30
         width: parent.width
-        anchors.horizontalCenter: parent.horizontalCenter
         maximumLength: 50
         color: "grey"
         selectByMouse: true
