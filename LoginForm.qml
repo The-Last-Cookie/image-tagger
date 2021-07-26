@@ -77,6 +77,7 @@ Item {
                 onClicked: {
                     inputLoginName.placeholderText = qsTr("Name")
                     inputLoginPassword.placeholderText = qsTr("Password")
+                    infoUserLoginNotSuccesful.visible = false
                     frame.push(Qt.resolvedUrl("qrc:/CreateAccountForm.qml"), StackView.Immediate)
                 }
             }

@@ -76,6 +76,7 @@ Item {
                 onClicked: {
                     inputCreateName.placeholderText = qsTr("Name")
                     inputCreatePassword.placeholderText = qsTr("Password")
+                    infoUserCreationNotSuccesful.visible = false
                     frame.pop(StackView.Immediate)
                 }
             }
