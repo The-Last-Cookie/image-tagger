@@ -280,8 +280,7 @@ Item {
             Rectangle {
                 z: 0
                 anchors.fill: parent
-                opacity: 0.5
-                color: "black"
+                color: Qt.rgba(0, 0, 0, 0.5)
             }
         }
     }
