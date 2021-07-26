@@ -104,7 +104,7 @@ Item {
         id: extendableSidebar
         anchors.left: sidebar.right
         height: parent.height
-        width: frame.width
+        width: parent.width
         visible: false
 
         MouseArea {

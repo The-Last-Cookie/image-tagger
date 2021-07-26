@@ -11,11 +11,9 @@ Window {
     minimumHeight: 300
     title: qsTr("ImageTagger")
 
-    StackView {
-        id: frame
-        initialItem: "qrc:/LoginPage.qml"
+    Loader {
+        id: loader
+        source: Qt.resolvedUrl("qrc:/LoginPage.qml")
         anchors.fill: parent
-
-        property alias frame: frame
     }
 }

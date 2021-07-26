@@ -5,6 +5,7 @@ import "uicomponents" as UIComponents
 
 Item {
     id: root
+    anchors.fill: parent
 
     Rectangle {
         width: parent.width / 2
@@ -108,7 +109,7 @@ Item {
                         return
                     }
 
-                    frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    loader.source = Qt.resolvedUrl("qrc:/MainPage.qml")
                 }
             }
 
@@ -132,9 +133,9 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 onClicked: {
-                    if (acs.login("", "", 1)) {
-                        frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
-                    }
+                    //if (acs.login("", "", 1)) {
+                        loader.source = Qt.resolvedUrl("qrc:/MainPage.qml")
+                    //}
                 }
 
                 onHoveredChanged: {
@@ -256,7 +257,7 @@ Item {
                     }
 
                     acs.login(txtCreate.text, txtPasswordCreate.text, 0)
-                    frame.replace(Qt.resolvedUrl("qrc:/MainPage.qml"))
+                    loader.source = Qt.resolvedUrl("qrc:/MainPage.qml")
                 }
             }
 
