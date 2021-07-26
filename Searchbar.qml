@@ -7,7 +7,6 @@ Item {
     property string defaultText: "text"
 
     TextField {
-        height: 30
         width: parent.width
         maximumLength: 50
         color: "grey"
