@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQml.Models 2.15
+import QtQuick.Controls 2.15
 
 Item {
     id: root
@@ -43,7 +44,7 @@ Item {
             cellWidth: 100
             cellHeight: 100
             focus: true
-            move: Transition {}
+            ScrollBar.horizontal: ScrollBar {}
 
             model: FileViewTemplate {}
             delegate: fileDelegate
