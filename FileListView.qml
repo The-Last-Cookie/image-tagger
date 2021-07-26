@@ -30,7 +30,6 @@ Item {
                 }
 
                 Text {
-                    anchors.fill: parent
                     text: name + "." + fileExtension
                     wrapMode: Text.WrapAnywhere
                     anchors.horizontalCenter: parent.horizontalCenter
