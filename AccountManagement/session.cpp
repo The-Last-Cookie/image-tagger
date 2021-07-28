@@ -11,9 +11,13 @@ Session::~Session()
 
 }
 
-bool Session::create(QString path, bool isLoggedInAsGuest)
+bool Session::create(QString username, QString path, bool isLoggedInAsGuest)
 {
     if (m_isLoggedIn) {
+        return false;
+    }
+
+    if (username == "") {
         return false;
     }
 
@@ -25,6 +29,7 @@ bool Session::create(QString path, bool isLoggedInAsGuest)
         m_isLoggedInAsGuest = true;
     }
 
+    m_username = username;
     m_path = path;
     m_isLoggedIn = true;
 
@@ -35,7 +40,13 @@ void Session::destroy()
 {
     m_isLoggedIn = false;
     m_isLoggedInAsGuest = false;
+    m_username = "";
     m_path = "";
+}
+
+QString Session::getUsername()
+{
+    return m_username;
 }
 
 QString Session::getPath()

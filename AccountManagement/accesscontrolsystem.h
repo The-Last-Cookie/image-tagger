@@ -29,7 +29,7 @@ class AccessControlSystem : public QObject
         bool login(QString username, QString password, bool isLoggedInAsGuest);
         void logout();
 
-        bool changePassword();
+        bool changePassword(QString oldPassword, QString newPassword, QString newPasswordConfirm);
 
         void encryptFiles(QString path);
         void decryptFiles(QString path);

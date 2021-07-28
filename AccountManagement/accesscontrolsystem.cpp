@@ -103,7 +103,7 @@ bool AccessControlSystem::login(QString username, QString password, bool isLogge
         QString path = m_um.createUserPath();
         m_um.createUserFiles(path);
 
-        return m_session.create(path, isLoggedInAsGuest);
+        return m_session.create("", path, isLoggedInAsGuest);
     }
 
     if (m_um.usernameIsValid(username)) {
@@ -116,7 +116,7 @@ bool AccessControlSystem::login(QString username, QString password, bool isLogge
     }
 
     QString path = m_um.retrievePathFromUser(username);
-    return m_session.create(path, isLoggedInAsGuest);
+    return m_session.create(username, path, isLoggedInAsGuest);
 }
 
 void AccessControlSystem::logout()
@@ -128,8 +128,25 @@ void AccessControlSystem::logout()
     m_session.destroy();
 }
 
-bool AccessControlSystem::changePassword()
+bool AccessControlSystem::changePassword(QString oldPassword, QString newPassword, QString newPasswordConfirm)
 {
+    // look if oldPassword is correct
+    QString hash = m_um.retrieveHashFromUser(m_session.getUsername());
+    if (!m_pwm.comparePasswordWithHash(oldPassword, hash)) {
+        return false;
+    }
+
+    if (!m_pwm.checkPassword(newPassword)) {
+        return false;
+    }
+
+    if (newPassword != newPasswordConfirm) {
+        return false;
+    }
+
+    // change password
+    //m_um.changePassword(newPassword);
+
     return false;
 }
 
