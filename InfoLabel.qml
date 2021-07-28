@@ -4,28 +4,32 @@ Item {
     id: root
 
     property color backgroundColor: "#a5314c"
-
     property color borderColor: "red"
     property int borderWidth: 2
 
-    property string textLabel: ""
+    property string textLabel: "Text"
     property color textColor: "white"
+    property alias textFormat: content.textFormat
+    property alias wrapMode: content.wrapMode
+    property int paddingLabel: 5
+    property int fontPointSize: 7
 
     Rectangle {
         height: parent.height
         width: parent.width
         color: backgroundColor
-        border.width: borderWidth
         border.color: borderColor
+        border.width: borderWidth
 
         Text {
+            id: content
+            width: parent.width
             text: textLabel
+            color: textColor
             textFormat: Text.MarkdownText
             wrapMode: Text.WordWrap
-            width: parent.width
-            color: textColor
-            padding: 5
-            font.pointSize: 7
+            padding: paddingLabel
+            font.pointSize: fontPointSize
         }
     }
 }

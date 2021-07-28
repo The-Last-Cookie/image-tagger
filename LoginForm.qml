@@ -99,7 +99,7 @@ Item {
             }
         }
 
-        UIComponents.LabelError {
+        UIComponents.InfoLabel {
             id: infoUserLoginNotSuccesful
             Layout.preferredHeight: 20
             Layout.fillWidth: true
@@ -132,7 +132,7 @@ Item {
             }
         }
 
-        UIComponents.LabelError {
+        UIComponents.InfoLabel {
             id: infoLoginAsGuest
             Layout.preferredHeight: 20
             Layout.fillWidth: true

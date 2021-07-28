@@ -99,11 +99,11 @@ Item {
             }
         }
 
-        UIComponents.LabelError {
+        UIComponents.InfoLabel {
             id: infoUserCreationNotSuccesful
             Layout.preferredHeight: 60
-            Layout.alignment: Qt.AlignCenter
             Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
             Layout.leftMargin: 30
             Layout.rightMargin: 30
             visible: false

@@ -14,7 +14,7 @@
     </qresource>
     <qresource prefix="/uicomponents">
         <file>FileListView.qml</file>
-        <file>LabelError.qml</file>
+        <file>InfoLabel.qml</file>
         <file>Searchbar.qml</file>
         <file>FileViewTemplate.qml</file>
     </qresource>
