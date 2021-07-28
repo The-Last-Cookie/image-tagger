@@ -57,11 +57,6 @@ void AccessControlSystem::deleteUser()
 {
     m_um.deleteUserFiles(m_session.getPath());
 
-    if (m_session.isLoggedInAsGuest()) {
-        m_session.destroy();
-        return;
-    }
-
     // Delete user from users.json
     QFile file;
     file.setFileName("data/users.json");
@@ -98,15 +93,8 @@ void AccessControlSystem::deleteUser()
     m_session.destroy();
 }
 
-bool AccessControlSystem::login(QString username, QString password, bool isLoggedInAsGuest)
+bool AccessControlSystem::login(QString username, QString password)
 {
-    if (isLoggedInAsGuest) {
-        QString path = m_um.createUserPath();
-        m_um.createUserFiles(path);
-
-        return m_session.create("", path, isLoggedInAsGuest);
-    }
-
     if (m_um.usernameIsValid(username)) {
         return false;
     }
@@ -117,15 +105,11 @@ bool AccessControlSystem::login(QString username, QString password, bool isLogge
     }
 
     QString path = m_um.retrievePathFromUser(username);
-    return m_session.create(username, path, isLoggedInAsGuest);
+    return m_session.create(username, path);
 }
 
 void AccessControlSystem::logout()
 {
-    if (m_session.isLoggedInAsGuest()) {
-        m_um.deleteUserFiles(m_session.getPath());
-    }
-
     m_session.destroy();
 }
 

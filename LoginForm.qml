@@ -90,7 +90,7 @@ Item {
             text: qsTr("Login")
 
             onClicked: {
-                if (!acs.login(inputLoginName.text, inputLoginPassword.text, 0)) {
+                if (!acs.login(inputLoginName.text, inputLoginPassword.text)) {
                     infoUserLoginNotSuccesful.visible = true
                     return
                 }
@@ -112,36 +112,14 @@ Item {
         }
 
         Button {
-            text: qsTr("Login as guest")
+            text: qsTr("dev access")
             Layout.preferredWidth: parent.width / 3
             Layout.preferredHeight: parent.height / 6
             Layout.alignment: Qt.AlignCenter
 
             onClicked: {
-                //if (acs.login("", "", 1)) {
                 loader.source = Qt.resolvedUrl("qrc:/MainPage.qml")
-                //}
             }
-
-            onHoveredChanged: {
-                if (infoLoginAsGuest.visible) {
-                    infoLoginAsGuest.visible = false
-                } else {
-                    infoLoginAsGuest.visible = true
-                }
-            }
-        }
-
-        UIComponents.InfoLabel {
-            id: infoLoginAsGuest
-            Layout.preferredHeight: 20
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignCenter
-            Layout.leftMargin: 30
-            Layout.rightMargin: 30
-            visible: false
-
-            textLabel: qsTr("Please be aware that your files will only be available as long as the application is running.")
         }
     }
 
