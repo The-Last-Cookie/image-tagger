@@ -93,6 +93,21 @@ Item {
 
         Button {
             Layout.preferredHeight: 30
+            Layout.preferredWidth: 50
+
+            Text {
+                text: qsTr("Logout")
+                anchors.centerIn: parent
+            }
+
+            onClicked: {
+                acs.logout()
+                loader.source = Qt.resolvedUrl("qrc:/LoginPage.qml")
+            }
+        }
+
+        Button {
+            Layout.preferredHeight: 30
             Layout.preferredWidth: 80
 
             Text {
@@ -106,9 +121,8 @@ Item {
             }
 
             onClicked: {
-                if (!acs.deleteUser()) {
-                    // TODO: show InfoLabel
-                }
+                acs.deleteUser()
+                loader.source = Qt.resolvedUrl("qrc:/LoginPage.qml")
             }
         }
     }
