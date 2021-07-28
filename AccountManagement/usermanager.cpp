@@ -211,6 +211,46 @@ QString UserManager::createUserPath()
     return newFileName;
 }
 
+bool UserManager::changePassword(QString path, QString hash)
+{
+    QFile file;
+    file.setFileName("data/users.json");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString data = file.readAll();
+    file.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonArray users = jsonObject["users"].toArray();
+    qDebug() << users;
+
+    if (users.isEmpty()) {
+        return false;
+    }
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users.at(i)["path"] == path) {
+            QJsonObject user = users.at(i).toObject();
+            user.insert("password", QJsonValue(hash));
+            users.replace(i, user);
+            break;
+        }
+    }
+
+    jsonObject.insert("users", QJsonValue(users));
+    jsonDoc.setObject(jsonObject);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
+
+        QTextStream out(&file);
+        out << bytes;
+    }
+    file.close();
+
+    return true;
+}
+
 void UserManager::deleteUserFiles(QString path)
 {
     Logger l(QDir::currentPath());

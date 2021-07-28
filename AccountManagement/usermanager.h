@@ -23,6 +23,8 @@ class UserManager
         QString createUserId();
         QString createUserPath();
 
+        bool changePassword(QString path, QString hash);
+
         void deleteUserFiles(QString path);
 
         QString retrieveHashFromUser(QString username);

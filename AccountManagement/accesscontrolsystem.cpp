@@ -87,6 +87,7 @@ void AccessControlSystem::deleteUser()
 
     jsonObject.insert("users", QJsonValue(users));
 
+    jsonDoc.setObject(jsonObject);
     QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
     file.open(QIODevice::WriteOnly | QIODevice::ExistingOnly | QIODevice::Text);
@@ -130,9 +131,12 @@ void AccessControlSystem::logout()
 
 bool AccessControlSystem::changePassword(QString oldPassword, QString newPassword, QString newPasswordConfirm)
 {
-    // look if oldPassword is correct
     QString hash = m_um.retrieveHashFromUser(m_session.getUsername());
     if (!m_pwm.comparePasswordWithHash(oldPassword, hash)) {
+        return false;
+    }
+
+    if (oldPassword == newPassword) {
         return false;
     }
 
@@ -144,10 +148,8 @@ bool AccessControlSystem::changePassword(QString oldPassword, QString newPasswor
         return false;
     }
 
-    // change password
-    //m_um.changePassword(newPassword);
-
-    return false;
+    hash = m_pwm.hashPassword(newPassword);
+    return m_um.changePassword(m_session.getPath(), hash);
 }
 
 void AccessControlSystem::encryptFiles(QString path)
