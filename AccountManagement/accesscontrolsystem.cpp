@@ -57,6 +57,11 @@ void AccessControlSystem::deleteUser()
 {
     m_um.deleteUserFiles(m_session.getPath());
 
+    if (m_session.isLoggedInAsGuest()) {
+        m_session.destroy();
+        return;
+    }
+
     // Delete user from users.json
     QFile file;
     file.setFileName("data/users.json");
