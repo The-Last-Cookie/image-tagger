@@ -1,13 +1,76 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 Item {
     id: root
 
-    Rectangle {
-        id: innerContent
+    ColumnLayout {
+        spacing: 0
         anchors.fill: parent
-        color: "brown"
+        anchors.leftMargin: 10
 
-        Text { text:"Here is SettingsPage" }
+        ColumnLayout {
+
+            Text {
+                text: qsTr("Theme")
+            }
+
+            ComboBox {
+
+            }
+        }
+
+        ColumnLayout {
+
+            Text {
+                text: qsTr("File encryption")
+            }
+
+            CheckBox {
+                text: qsTr("Encrypt files")
+            }
+        }
+
+        ColumnLayout {
+
+            Text {
+                text: qsTr("Language")
+            }
+
+            ComboBox {
+
+            }
+        }
+
+        ColumnLayout {
+
+            Text {
+                text: qsTr("Font size")
+            }
+
+            ComboBox {
+
+            }
+        }
+
+        ColumnLayout {
+
+            Text {
+                text: qsTr("App information")
+            }
+
+            Text {
+                text: qsTr("Version: 0.1")
+            }
+
+            Text {
+                text: qsTr("Made by The-Last-Cookie")
+            }
+
+            Text {
+                text: qsTr("Github: github.com/The-Last-Cookie")
+            }
+        }
     }
 }
