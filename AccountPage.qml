@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
+import "uicomponents" as UIComponents
+
 Item {
     id: root
 
@@ -38,6 +40,7 @@ Item {
                 TextField {
                     id: txtOldPassword
                     Layout.preferredHeight: 30
+                    echoMode: TextInput.Password
                 }
             }
 
@@ -52,6 +55,7 @@ Item {
                 TextField {
                     id: txtNewPassword
                     Layout.preferredHeight: 30
+                    echoMode: TextInput.Password
                 }
             }
 
@@ -66,6 +70,7 @@ Item {
                 TextField {
                     id: txtNewPasswordConfirm
                     Layout.preferredHeight: 30
+                    echoMode: TextInput.Password
                 }
             }
 
@@ -85,9 +90,22 @@ Item {
 
                 onClicked: {
                     if (!acs.changePassword(txtOldPassword.text, txtNewPassword.text, txtNewPasswordConfirm.text)) {
-                        // TODO: show InfoLabel
+                        infoPasswordNotChanged.visible = true
+                    } else {
+                        txtOldPassword.text = ""
+                        txtNewPassword.text = ""
+                        txtNewPasswordConfirm.text = ""
+                        infoPasswordNotChanged.visible = false
                     }
                 }
+            }
+
+            UIComponents.InfoLabel {
+                id: infoPasswordNotChanged
+                Layout.preferredHeight: 30
+                Layout.preferredWidth: 250
+                textLabel: qsTr("There seems to be a problem. Either your current password is not correct, the new password is not safe enough or the two new passwords aren't the same.")
+                visible: false
             }
         }
 
