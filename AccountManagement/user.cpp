@@ -12,7 +12,7 @@ User::~User()
 
 void User::setUsername(QString username)
 {
-    m_name = username;
+    m_username = username;
 }
 
 void User::setId(QString id)
@@ -30,9 +30,9 @@ void User::setPath(QString path)
     m_path = path;
 }
 
-QString User::getName()
+QString User::getUsername()
 {
-    return m_name;
+    return m_username;
 }
 
 QString User::getId()

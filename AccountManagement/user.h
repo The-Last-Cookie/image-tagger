@@ -13,13 +13,13 @@ class User
         void setPassword(QString password);
         void setPath(QString path);
 
-        QString getName();
+        QString getUsername();
         QString getId();
         QString getPassword();
         QString getPath();
 
     private:
-        QString m_name;
+        QString m_username;
         QString m_id;
         QString m_password;
         QString m_path;

@@ -22,7 +22,7 @@ void UserManager::addNewUser(User user)
     QJsonObject jsonObject = jsonDoc.object();
 
     QJsonObject newUser;
-    newUser.insert("username", QJsonValue(user.getName()));
+    newUser.insert("username", QJsonValue(user.getUsername()));
     newUser.insert("id", QJsonValue(user.getId()));
     newUser.insert("password", QJsonValue(user.getPassword()));
     newUser.insert("path", QJsonValue(user.getPath()));
@@ -223,7 +223,6 @@ bool UserManager::changePassword(QString path, QString hash)
     QJsonObject jsonObject = jsonDoc.object();
 
     QJsonArray users = jsonObject["users"].toArray();
-    qDebug() << users;
 
     if (users.isEmpty()) {
         return false;
