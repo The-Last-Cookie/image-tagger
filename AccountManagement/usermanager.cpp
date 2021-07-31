@@ -197,7 +197,6 @@ QString UserManager::createUserId()
 
 QString UserManager::createUserPath()
 {
-    //QDir dir = QCoreApplication::applicationDirPath();
     QDir dir("data/");
     QFileInfoList fileList = dir.entryInfoList(QDir::Filters(QDir::Dirs | QDir::NoDotAndDotDot), QDir::SortFlags(QDir::Name));
 
@@ -206,7 +205,7 @@ QString UserManager::createUserPath()
     }
 
     QString lastFileName = fileList.last().fileName();
-    QString newFileName = QString::fromStdString(StringCalc::Decimal::add(lastFileName.toStdString(),"1"));
+    QString newFileName = QString::fromStdString(StringCalc::Decimal::add(lastFileName.toStdString(), "1"));
 
     return newFileName;
 }
