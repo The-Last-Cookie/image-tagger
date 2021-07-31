@@ -26,7 +26,10 @@ SOURCES += \
         StringCalc/decimal.cpp \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
+        basicfile.cpp \
         databasemanager.cpp \
+        filelist.cpp \
+        filelistmodel.cpp \
         logger.cpp \
         main.cpp \
         settingsmanager.cpp
@@ -39,7 +42,10 @@ HEADERS += \
     AccountManagement/usermanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
+    basicfile.h \
     databasemanager.h \
+    filelist.h \
+    filelistmodel.h \
     logger.h \
     settingsmanager.h
 
