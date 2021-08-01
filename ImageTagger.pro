@@ -21,12 +21,14 @@ SOURCES += \
         AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
+        DataManagement/filemanager.cpp \
         StringCalc/binary.cpp \
         StringCalc/converter.cpp \
         StringCalc/decimal.cpp \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
         databasemanager.cpp \
+        filemanager.cpp \
         logger.cpp \
         main.cpp \
         settingsmanager.cpp
@@ -37,9 +39,11 @@ HEADERS += \
     AccountManagement/session.h \
     AccountManagement/user.h \
     AccountManagement/usermanager.h \
+    DataManagement/filemanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     databasemanager.h \
+    filemanager.h \
     logger.h \
     settingsmanager.h
 
