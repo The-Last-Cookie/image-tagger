@@ -42,6 +42,8 @@ Item {
 
             RowLayout {
                 id: actionMenu
+                anchors.right: parent.right
+                anchors.left: parent.left
                 spacing: 5
 
                 UIComponents.Searchbar {
@@ -52,16 +54,20 @@ Item {
                     defaultText: qsTr("Search")
                 }
 
-                Button {
-                    text: "Add"
-                    Layout.minimumWidth: 10
+                RowLayout {
+                    spacing: 5
                     Layout.fillWidth: true
-                }
+                    Layout.alignment: Qt.AlignRight
 
-                Button {
-                    text: "Delete"
-                    Layout.minimumWidth: 10
-                    Layout.fillWidth: true
+                    Button {
+                        text: "Add file"
+                        Layout.minimumWidth: 10
+                    }
+
+                    Button {
+                        text: "Add tag"
+                        Layout.minimumWidth: 10
+                    }
                 }
             }
 
