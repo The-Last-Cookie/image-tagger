@@ -10,21 +10,28 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     SettingsManager settings;
     QString importMode = settings.getImportMode(path);
 
-    QFile::copy(oldFilePath, path + "/images");
+    QFile oldFile;
+    oldFile.setFileName(oldFilePath);
+
+    QString name = QStringRef(&oldFilePath,
+                              oldFilePath.lastIndexOf("/"),
+                              oldFilePath.lastIndexOf(".") - oldFilePath.lastIndexOf("/")).toString();
+    QString fileExtension = QStringRef(&oldFilePath, oldFilePath.lastIndexOf("."), oldFilePath.length()).toString();
+    QString added = "01-01-0000";
+    QString size = "1";
+
+    oldFile.copy(oldFilePath, QDir::currentPath() + path + "/images");
 
     if (importMode == "move") {
-        QFile oldFile;
-        oldFile.setFileName(oldFilePath);
         oldFile.remove();
     }
 
     QSqlQuery query;
     query.prepare("INSERT INTO files (id, name, fileExtension, added, size) "
-                  "VALUES (?, ?, ?, ?, ?)");
-    query.bindValue(":id", "");
-    query.bindValue(":name", "");
-    query.bindValue(":fileExtension", "");
-    query.bindValue(":added", "");
-    query.bindValue(":size", "");
+                  "VALUES (?, ?, ?, ?)");
+    query.bindValue(":name", name);
+    query.bindValue(":fileExtension", fileExtension);
+    query.bindValue(":added", added);
+    query.bindValue(":size", size);
     query.exec();
 }
