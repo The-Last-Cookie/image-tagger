@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Dialogs 1.2
 
 import "uicomponents" as UIComponents
 
@@ -62,6 +63,10 @@ Item {
                     Button {
                         text: "Add file"
                         Layout.minimumWidth: 10
+
+                        onClicked: {
+                            addNewFileDialog.open()
+                        }
                     }
 
                     Button {
@@ -78,6 +83,18 @@ Item {
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
             }
+        }
+    }
+
+    FileDialog {
+        id: addNewFileDialog
+        selectMultiple: false
+        selectFolder: false
+        nameFilters: "*.jpg, *.png"
+        folder: shortcuts.home
+
+        onAccepted: {
+            //FileManager.addNewFile(acs.getSessionPath, this.fileUrl)
         }
     }
 }
