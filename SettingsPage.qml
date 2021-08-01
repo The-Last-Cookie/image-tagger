@@ -13,6 +13,17 @@ Item {
         ColumnLayout {
 
             Text {
+                text: qsTr("Language")
+            }
+
+            ComboBox {
+
+            }
+        }
+
+        ColumnLayout {
+
+            Text {
                 text: qsTr("Theme")
             }
 
@@ -35,7 +46,7 @@ Item {
         ColumnLayout {
 
             Text {
-                text: qsTr("Language")
+                text: qsTr("Import method")
             }
 
             ComboBox {
