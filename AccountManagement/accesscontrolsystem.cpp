@@ -165,3 +165,8 @@ QString AccessControlSystem::getPasswordSpecialChars()
 {
     return m_pwm.getSpecialChars();
 }
+
+QString AccessControlSystem::getSessionPath()
+{
+    return m_session.getPath();
+}

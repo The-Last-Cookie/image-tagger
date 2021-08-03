@@ -94,7 +94,7 @@ Item {
         folder: shortcuts.home
 
         onAccepted: {
-            //FileManager.addNewFile(acs.getSessionPath, this.fileUrl)
+            fileManager.addNewFile(acs.getSessionPath(), this.fileUrl)
         }
     }
 }

@@ -5,6 +5,7 @@
 
 #include "logger.h"
 #include "AccountManagement/accesscontrolsystem.h"
+#include "DataManagement/filemanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,9 +24,11 @@ int main(int argc, char *argv[])
     }
 
     AccessControlSystem acs;
+    FileManager fileManager;
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("acs", &acs);
+    engine.rootContext()->setContextProperty("fileManager", &fileManager);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

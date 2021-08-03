@@ -29,7 +29,6 @@ SOURCES += \
         StringCalc/stringcalc.cpp \
         databasemanager.cpp \
         dateutils.cpp \
-        filemanager.cpp \
         logger.cpp \
         main.cpp \
         settingsmanager.cpp
@@ -45,7 +44,6 @@ HEADERS += \
     StringCalc/stringcalc.h \
     databasemanager.h \
     dateutils.h \
-    filemanager.h \
     logger.h \
     settingsmanager.h
 

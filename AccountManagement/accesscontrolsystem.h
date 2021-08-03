@@ -39,6 +39,8 @@ class AccessControlSystem : public QObject
         int getPasswordMinNumLower();
         QString getPasswordSpecialChars();
 
+        QString getSessionPath();
+
     private:
         PasswordManager m_pwm;
         UserManager m_um;
