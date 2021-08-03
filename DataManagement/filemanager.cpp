@@ -35,3 +35,8 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     query.bindValue(":size", size);
     query.exec();
 }
+
+bool FileManager::deleteFile(QString path)
+{
+
+}

@@ -16,5 +16,6 @@ class FileManager
         ~FileManager();
 
         bool addNewFile(QString path, QString oldFilePath);
+        bool deleteFile(QString path);
 };
 
