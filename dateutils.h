@@ -9,6 +9,6 @@ class DateUtils
         DateUtils();
         ~DateUtils();
 
-        QString getDate(QString format);
+        static QString getDate(QString format);
 };
 

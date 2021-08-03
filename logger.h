@@ -2,7 +2,8 @@
 
 #include <QTextStream>
 #include <QFile>
-#include <QDateTime>
+
+#include "dateutils.h"
 
 class Logger
 {
