@@ -14,8 +14,6 @@ class Logger
         void warning(QString message);
         void error(QString message);
 
-        QString getDate(QString format);
-
         void setPath(QString path);
 
     private:

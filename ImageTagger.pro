@@ -28,6 +28,7 @@ SOURCES += \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
         databasemanager.cpp \
+        dateutils.cpp \
         filemanager.cpp \
         logger.cpp \
         main.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     databasemanager.h \
+    dateutils.h \
     filemanager.h \
     logger.h \
     settingsmanager.h
