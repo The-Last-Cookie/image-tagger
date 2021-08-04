@@ -102,6 +102,7 @@ Item {
 
     MessageDialog {
         id: dialogFileAlreadyExists
+        icon: StandardIcon.Warning
         title: qsTr("Can't add file")
         text: qsTr("The file that you want to add, already exists.")
     }
