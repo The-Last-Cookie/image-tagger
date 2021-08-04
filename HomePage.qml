@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Dialogs 1.2
+import QtQuick.Dialogs 1.3
 
 import "uicomponents" as UIComponents
 
@@ -65,7 +65,7 @@ Item {
                         Layout.minimumWidth: 10
 
                         onClicked: {
-                            addNewFileDialog.open()
+                            dialogAddNewFile.open()
                         }
                     }
 
@@ -87,14 +87,22 @@ Item {
     }
 
     FileDialog {
-        id: addNewFileDialog
+        id: dialogAddNewFile
         selectMultiple: false
         selectFolder: false
         nameFilters: "*.jpg, *.png"
         folder: shortcuts.home
 
         onAccepted: {
-            fileManager.addNewFile(acs.getSessionPath(), this.fileUrl)
+            if (!fileManager.addNewFile(acs.getSessionPath(), this.fileUrl)) {
+                dialogFileAlreadyExists.open()
+            }
         }
+    }
+
+    MessageDialog {
+        id: dialogFileAlreadyExists
+        title: qsTr("Can't add file")
+        text: qsTr("The file that you want to add, already exists.")
     }
 }

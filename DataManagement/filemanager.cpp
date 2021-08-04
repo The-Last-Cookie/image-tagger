@@ -27,8 +27,8 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
                               positionOfLastSlash + 1,
                               positionOfLastPoint - positionOfLastSlash - 1).toString();
     QString extension = QStringRef(&oldFilePath,
-                                       positionOfLastPoint + 1,
-                                       oldFilePath.length() - positionOfLastPoint - 1).toString();
+                                   positionOfLastPoint + 1,
+                                   oldFilePath.length() - positionOfLastPoint - 1).toString();
     QString added = DateUtils::getDate("YYYY-MM-DD");
     QString size = QString::number(oldFile.size());
 
