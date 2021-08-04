@@ -61,7 +61,7 @@ void UserManager::createUserFiles(QString path)
         "("
         "fileId INTEGER NOT NULL UNIQUE,"
         "name TEXT,"
-        "fileExtension TEXT,"
+        "extension TEXT,"
         "added DATE,"
         "size INTEGER,"
         "PRIMARY KEY (fileId ASC)"
