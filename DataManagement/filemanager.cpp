@@ -44,15 +44,14 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     DatabaseManager dbm;
     dbm.openConnection(path);
 
-    // TODO: check database query
     QSqlQuery query;
     query.prepare("INSERT INTO files (fileId, name, fileExtension, added, size) "
-                  "VALUES (?, ?, ?, ?, ?)");
-    query.bindValue(0, "null");
-    query.bindValue(1, name);
-    query.bindValue(2, fileExtension);
-    query.bindValue(3, added);
-    query.bindValue(4, size);
+                  "VALUES (:fileId, :name, :fileExtension, :added, :size)");
+    query.bindValue(":fileId", QVariant(QVariant::Int));
+    query.bindValue(":name", name);
+    query.bindValue(":fileExtension", fileExtension);
+    query.bindValue(":added", added);
+    query.bindValue(":size", size);
     query.exec();
 
     dbm.closeConnection();
