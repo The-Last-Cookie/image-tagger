@@ -59,7 +59,22 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     return true;
 }
 
-bool FileManager::deleteFile(QString path, QString filename)
+bool FileManager::deleteFile(QString path, int fileId, QString name, QString extension)
 {
-    return false;
+    QFile file;
+    file.setFileName(QDir::currentPath() + "/data/" + path + "/" + name + "." + extension);
+    if (!file.remove()) {
+        return false;
+    }
+
+    DatabaseManager dbm;
+    dbm.openConnection(path);
+
+    QSqlQuery query;
+    query.prepare("DELETE FROM files WHERE fileId = :fileId;");
+    query.bindValue(":fileId", fileId);
+    query.exec();
+
+    dbm.closeConnection();
+    return true;
 }

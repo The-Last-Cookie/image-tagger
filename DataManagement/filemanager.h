@@ -22,6 +22,6 @@ class FileManager : public QObject
 
     public slots:
         bool addNewFile(QString path, QString oldFilePath);
-        bool deleteFile(QString path, QString filename);
+        bool deleteFile(QString path, int fileId, QString name, QString extension);
 };
 
