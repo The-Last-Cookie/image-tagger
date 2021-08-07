@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
     }
 
     AccessControlSystem acs;
-    FileManager fileManager;
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("acs", &acs);
-    engine.rootContext()->setContextProperty("fileManager", &fileManager);
+
+    qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

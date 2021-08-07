@@ -1,6 +1,6 @@
 #include "filemanager.h"
 
-FileManager::FileManager()
+FileManager::FileManager(QObject *parent) : QObject(parent)
 {
 
 }

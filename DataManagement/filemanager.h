@@ -17,7 +17,7 @@ class FileManager : public QObject
     Q_OBJECT
 
     public:
-        FileManager();
+        explicit FileManager(QObject *parent = nullptr);
         ~FileManager();
 
     public slots:
