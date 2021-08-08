@@ -23,6 +23,25 @@ int main(int argc, char *argv[])
         l.warning("Directory logs not available. Creating directory logs now");
     }
 
+    // If not available, create users.json
+    QFile file;
+    file.setFileName("data/users.json");
+    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
+        QJsonObject jsonObject;
+        jsonObject.insert("users", QJsonArray());
+
+        QJsonDocument jsonDoc;
+        jsonDoc.setObject(jsonObject);
+
+        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
+
+        QTextStream out(&file);
+        out << bytes;
+
+        l.info("File users.json not available. Creating file users.json now");
+    }
+    file.close();
+
     qmlRegisterSingletonInstance("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");

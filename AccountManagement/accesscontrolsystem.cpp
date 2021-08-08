@@ -3,28 +3,7 @@
 AccessControlSystem *AccessControlSystem::m_instance = nullptr;
 AccessControlSystem::AccessControlSystem(QObject *parent) : QObject(parent)
 {
-    //m_instance = nullptr;
 
-    Logger l(QDir::currentPath());
-
-    // If not available, create users.json
-    QFile file;
-    file.setFileName("data/users.json");
-    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
-        QJsonObject jsonObject;
-        jsonObject.insert("users", QJsonArray());
-
-        QJsonDocument jsonDoc;
-        jsonDoc.setObject(jsonObject);
-
-        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
-
-        QTextStream out(&file);
-        out << bytes;
-
-        l.info("Created file users.json");
-    }
-    file.close();
 }
 
 AccessControlSystem::~AccessControlSystem()
