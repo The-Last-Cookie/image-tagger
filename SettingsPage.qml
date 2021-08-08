@@ -30,7 +30,7 @@ Item {
                 }
 
                 onCurrentIndexChanged: {
-                    //settings.setLanguage(AccessControlSystem.getSessionPath(), Language.getCode(languages.get(currentIndex).text))
+                    //settings.setLanguage(AccessControlSystem.getSessionPath(), Language.getTwoLetterCode(languages.get(currentIndex).text))
                 }
             }
         }
