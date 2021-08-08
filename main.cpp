@@ -6,6 +6,7 @@
 #include "logger.h"
 #include "AccountManagement/accesscontrolsystem.h"
 #include "DataManagement/filemanager.h"
+#include "settingsmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -45,6 +46,7 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonInstance<AccessControlSystem>("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
+    qmlRegisterType<SettingsManager>("Settings", 1, 0, "SettingsManager");
 
     l.info("QML types successfully created");
 
