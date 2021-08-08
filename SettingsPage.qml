@@ -1,6 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
+import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
+
+import AccessControlSystem 1.0
+import Settings 1.0
 
 Item {
     id: root
@@ -17,7 +21,17 @@ Item {
             }
 
             ComboBox {
+                currentIndex: 0
+                model: ListModel {
+                    id: languages
+                    ListElement { text: "English" }
+                    ListElement { text: "Deutsch" }
+                    ListElement { text: "Français" }
+                }
 
+                onCurrentIndexChanged: {
+                    //settings.setLanguage(AccessControlSystem.getSessionPath(), Language.getCode(languages.get(currentIndex).text))
+                }
             }
         }
 
@@ -28,7 +42,7 @@ Item {
             }
 
             ComboBox {
-
+                model: [qsTr("White"), qsTr("Dark")]
             }
         }
 
@@ -39,7 +53,13 @@ Item {
             }
 
             CheckBox {
+                id: encryption
                 text: qsTr("Encrypt files")
+                //checkState: settings.getEncryption(AccessControlSystem.getSessionPath())
+
+                onCheckStateChanged: {
+                    settings.setEncryption(AccessControlSystem.getSessionPath(), encryption.checked)
+                }
             }
         }
 
@@ -50,18 +70,7 @@ Item {
             }
 
             ComboBox {
-
-            }
-        }
-
-        ColumnLayout {
-
-            Text {
-                text: qsTr("Font size")
-            }
-
-            ComboBox {
-
+                model: [qsTr("Move"), qsTr("Copy")]
             }
         }
 
@@ -83,5 +92,9 @@ Item {
                 text: qsTr("Github: github.com/The-Last-Cookie")
             }
         }
+    }
+
+    SettingsManager {
+        id: settings
     }
 }
