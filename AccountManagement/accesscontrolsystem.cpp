@@ -1,7 +1,10 @@
 #include "accesscontrolsystem.h"
 
-AccessControlSystem::AccessControlSystem()
+AccessControlSystem *AccessControlSystem::m_instance = nullptr;
+AccessControlSystem::AccessControlSystem(QObject *parent) : QObject(parent)
 {
+    //m_instance = nullptr;
+
     Logger l(QDir::currentPath());
 
     // If not available, create users.json
@@ -27,6 +30,16 @@ AccessControlSystem::AccessControlSystem()
 AccessControlSystem::~AccessControlSystem()
 {
 
+}
+
+AccessControlSystem &AccessControlSystem::instance()
+{
+    // Avoid creating new instances
+    if (m_instance == nullptr) {
+        m_instance = new AccessControlSystem;
+    }
+
+    return *m_instance;
 }
 
 bool AccessControlSystem::createUser(QString username, QString password)

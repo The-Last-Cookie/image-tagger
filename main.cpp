@@ -17,19 +17,20 @@ int main(int argc, char *argv[])
 
     QDir dir;
     if (dir.mkdir("data")) {
-        l.info("Created directory data");
+        l.warning("Directory data not available. Creating directory data now");
     }
     if (dir.mkdir("logs")) {
-        l.info("Created directory logs");
+        l.warning("Directory logs not available. Creating directory logs now");
     }
 
-    AccessControlSystem acs;
-
-    QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("acs", &acs);
+    qmlRegisterSingletonInstance("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
 
+    l.info("QML types successfully created");
+
+    l.info("Starting QML engine");
+    QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
 
     int currentExitCode = app.exec();
 
-    acs.logout();
+    AccessControlSystem::instance().logout();
 
     l.info("Shutting down application");
     return currentExitCode;

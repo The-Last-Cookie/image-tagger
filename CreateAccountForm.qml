@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 import "uicomponents" as UIComponents
+import AccessControlSystem 1.0
 
 Item {
     id: root
@@ -89,12 +90,12 @@ Item {
             text: qsTr("Create new account")
 
             onClicked: {
-                if (!acs.createUser(inputCreateName.text, inputCreatePassword.text)) {
+                if (!AccessControlSystem.createUser(inputCreateName.text, inputCreatePassword.text)) {
                     infoUserCreationNotSuccesful.visible = true
                     return
                 }
 
-                acs.login(inputCreateName.text, inputCreatePassword.text, 0)
+                AccessControlSystem.login(inputCreateName.text, inputCreatePassword.text, 0)
                 loader.source = Qt.resolvedUrl("qrc:/MainPage.qml")
             }
         }

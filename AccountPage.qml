@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 import "uicomponents" as UIComponents
+import AccessControlSystem 1.0
 
 Item {
     id: root
@@ -89,7 +90,7 @@ Item {
                 }
 
                 onClicked: {
-                    if (!acs.changePassword(txtOldPassword.text, txtNewPassword.text, txtNewPasswordConfirm.text)) {
+                    if (!AccessControlSystem.changePassword(txtOldPassword.text, txtNewPassword.text, txtNewPasswordConfirm.text)) {
                         infoPasswordNotChanged.visible = true
                     } else {
                         txtOldPassword.text = ""
@@ -119,7 +120,7 @@ Item {
             }
 
             onClicked: {
-                acs.logout()
+                AccessControlSystem.logout()
                 loader.source = Qt.resolvedUrl("qrc:/LoginPage.qml")
             }
         }
@@ -139,7 +140,7 @@ Item {
             }
 
             onClicked: {
-                acs.deleteUser()
+                AccessControlSystem.deleteUser()
                 loader.source = Qt.resolvedUrl("qrc:/LoginPage.qml")
             }
         }

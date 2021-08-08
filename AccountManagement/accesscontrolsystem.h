@@ -19,7 +19,7 @@ class AccessControlSystem : public QObject
     Q_OBJECT
 
     public:
-        AccessControlSystem();
+        static AccessControlSystem &instance();
         ~AccessControlSystem();
 
     public slots:
@@ -42,6 +42,9 @@ class AccessControlSystem : public QObject
         QString getSessionPath();
 
     private:
+        explicit AccessControlSystem(QObject *parent = nullptr);
+        static AccessControlSystem* m_instance;
+
         PasswordManager m_pwm;
         UserManager m_um;
         Session m_session;
