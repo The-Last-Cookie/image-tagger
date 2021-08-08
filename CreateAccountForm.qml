@@ -111,10 +111,10 @@ Item {
 
             textLabel: qsTr(
                            "It seems that either that username is already taken or that your password is not safe enough. A password has these constraints: "
-                           + "**at least " + acs.getPasswordMinLength() + " characters long**, "
-                           + "**at least " + acs.getPasswordMinNumUpper() + " uppercase letters**, "
-                           + "**at least " + acs.getPasswordMinNumLower() + " lowercase letters** and "
-                           + "**at least one special character** (" + acs.getPasswordSpecialChars() + ")."
+                           + "**at least " + AccessControlSystem.getPasswordMinLength() + " characters long**, "
+                           + "**at least " + AccessControlSystem.getPasswordMinNumUpper() + " uppercase letters**, "
+                           + "**at least " + AccessControlSystem.getPasswordMinNumLower() + " lowercase letters** and "
+                           + "**at least one special character** (" + AccessControlSystem.getPasswordSpecialChars() + ")."
                            )
         }
     }
