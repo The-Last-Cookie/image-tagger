@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.3
 
 import "uicomponents" as UIComponents
+import AccessControlSystem 1.0
 import DataHandler 1.0
 
 Item {
@@ -99,7 +100,7 @@ Item {
         folder: shortcuts.home
 
         onAccepted: {
-            if (!fileManager.addNewFile(acs.getSessionPath(), this.fileUrl)) {
+            if (!fileManager.addNewFile(AccessControlSystem.getSessionPath(), this.fileUrl)) {
                 dialogFileAlreadyExists.open()
             }
         }

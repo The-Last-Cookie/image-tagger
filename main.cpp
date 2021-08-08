@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     }
     file.close();
 
-    qmlRegisterSingletonInstance("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
+    qmlRegisterSingletonInstance<AccessControlSystem>("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
 
