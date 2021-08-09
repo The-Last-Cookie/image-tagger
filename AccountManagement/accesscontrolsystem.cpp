@@ -97,11 +97,13 @@ bool AccessControlSystem::login(QString username, QString password)
     }
 
     QString path = m_um.retrievePathFromUser(username);
+    decryptFiles(path);
     return m_session.create(username, path);
 }
 
 void AccessControlSystem::logout()
 {
+    encryptFiles(m_session.getPath());
     m_session.destroy();
 }
 
