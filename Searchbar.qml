@@ -13,7 +13,10 @@ Item {
     property int borderWidth: 2
     property int defaultRadius: 20
 
+    property alias textField: textField
+
     TextField {
+        id: textField
         width: parent.width
         maximumLength: defaultMaximumLength
         color: defaultTextColor

@@ -6,6 +6,7 @@ import QtQuick.Dialogs 1.3
 import "uicomponents" as UIComponents
 import AccessControlSystem 1.0
 import DataHandler 1.0
+import Search 1.0
 
 Item {
     id: root
@@ -55,6 +56,10 @@ Item {
                     Layout.minimumHeight: 30
                     Layout.leftMargin: 10
                     defaultText: qsTr("Search")
+
+                    textField.onEditingFinished: {
+                        searchManager.retrieveSearchResult(textField.text)
+                    }
                 }
 
                 RowLayout {
@@ -90,6 +95,10 @@ Item {
 
     FileManager {
         id: fileManager
+    }
+
+    SearchManager {
+        id: searchManager
     }
 
     FileDialog {

@@ -6,20 +6,24 @@
 #include <QVector>
 #include <QSqlQuery>
 
+#include "AccountManagement/accesscontrolsystem.h"
 #include "searchresult.h"
 #include "searchutils.h"
+#include "databasemanager.h"
 
 class SearchManager : public QObject
 {
     Q_OBJECT
 
     public:
-        SearchManager();
+        explicit SearchManager(QObject *parent = nullptr);
         ~SearchManager();
 
-        SearchResult retrieveSearchResult(QString searchQuery);
+    public slots:
+        void retrieveSearchResult(QString searchQuery);
+        SearchResult* getSearchResult();
 
     private:
         QVector<QString> m_args;
-        SearchResult m_result;
+        SearchResult *m_result;
 };

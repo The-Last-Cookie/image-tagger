@@ -7,6 +7,8 @@
 #include "AccountManagement/accesscontrolsystem.h"
 #include "DataManagement/filemanager.h"
 #include "settingsmanager.h"
+#include "DataManagement/Search/searchmanager.h"
+#include "DataManagement/Search/searchresult.h"
 
 int main(int argc, char *argv[])
 {
@@ -47,6 +49,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
     qmlRegisterType<SettingsManager>("Settings", 1, 0, "SettingsManager");
+    qmlRegisterType<SearchManager>("Search", 1, 0, "SearchManager");
+    //qmlRegisterType<SearchResult>("Search", 1, 0, "SearchResult");
 
     l.info("QML types successfully created");
 

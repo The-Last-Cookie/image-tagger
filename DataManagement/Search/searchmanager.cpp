@@ -1,15 +1,23 @@
 #include "searchmanager.h"
 
-SearchManager::SearchManager()
+SearchManager::SearchManager(QObject *parent) : QObject(parent)
 {
 
 }
 
-SearchResult SearchManager::retrieveSearchResult(QString searchQuery)
+SearchManager::~SearchManager()
+{
+
+}
+
+void SearchManager::retrieveSearchResult(QString searchQuery)
 {
     m_args = SearchUtils::toSingleArgs(searchQuery);
 
     searchQuery = SearchUtils::convertToSqlQuery(m_args);
+
+    DatabaseManager dbm;
+    dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;
     query.exec(searchQuery);
@@ -24,5 +32,11 @@ SearchResult SearchManager::retrieveSearchResult(QString searchQuery)
         result.appendFile(file);
     }
 
-    return result;
+    dbm.closeConnection();
+    m_result = &result;
+}
+
+SearchResult* SearchManager::getSearchResult()
+{
+    return m_result;
 }

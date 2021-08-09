@@ -1,11 +1,14 @@
 #pragma once
 
+#include <QObject>
 #include <QVector>
 
 #include "../basicfile.h"
 
-class SearchResult
+class SearchResult : QObject
 {
+    Q_OBJECT
+
     public:
         SearchResult();
         ~SearchResult();
