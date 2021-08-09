@@ -9,7 +9,6 @@
 
 #include "AccountManagement/user.h"
 #include "databasemanager.h"
-#include "settingsmanager.h"
 #include "StringCalc/stringcalc.h"
 
 class UserManager
@@ -22,6 +21,7 @@ class UserManager
         void createUserFiles(QString path);
         QString createUserId();
         QString createUserPath();
+        QJsonObject createDefaultSettingsFile();
 
         bool changePassword(QString path, QString hash);
 

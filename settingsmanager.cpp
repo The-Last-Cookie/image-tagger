@@ -10,21 +10,10 @@ SettingsManager::~SettingsManager()
 
 }
 
-QJsonObject SettingsManager::createDefaultSettingsFile()
-{
-    QJsonObject settings;
-    settings.insert("language", "en");
-    settings.insert("theme", "white");
-    settings.insert("encryption", true);
-    settings.insert("import_mode", "move");
-
-    return settings;
-}
-
-QString SettingsManager::getImportMode(QString path)
+QString SettingsManager::getImportMode()
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -36,10 +25,10 @@ QString SettingsManager::getImportMode(QString path)
     return importMode;
 }
 
-void SettingsManager::setImportMode(QString path, QString mode)
+void SettingsManager::setImportMode(QString mode)
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -59,10 +48,10 @@ void SettingsManager::setImportMode(QString path, QString mode)
     file.close();
 }
 
-QString SettingsManager::getTheme(QString path)
+QString SettingsManager::getTheme()
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -74,10 +63,10 @@ QString SettingsManager::getTheme(QString path)
     return theme;
 }
 
-void SettingsManager::setTheme(QString path, QString theme)
+void SettingsManager::setTheme(QString theme)
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -97,10 +86,10 @@ void SettingsManager::setTheme(QString path, QString theme)
     file.close();
 }
 
-bool SettingsManager::getEncryption(QString path)
+bool SettingsManager::getEncryption()
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -112,10 +101,10 @@ bool SettingsManager::getEncryption(QString path)
     return encryption;
 }
 
-void SettingsManager::setEncryption(QString path, bool encryption)
+void SettingsManager::setEncryption(bool encryption)
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -135,10 +124,10 @@ void SettingsManager::setEncryption(QString path, bool encryption)
     file.close();
 }
 
-QString SettingsManager::getLanguage(QString path)
+QString SettingsManager::getLanguage()
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();
@@ -150,10 +139,10 @@ QString SettingsManager::getLanguage(QString path)
     return language;
 }
 
-void SettingsManager::setLanguage(QString path, QString language)
+void SettingsManager::setLanguage(QString language)
 {
     QFile file;
-    file.setFileName("data/" + path + "/settings.json");
+    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString data = file.readAll();
     file.close();

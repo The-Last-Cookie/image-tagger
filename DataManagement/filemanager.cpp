@@ -13,7 +13,7 @@ FileManager::~FileManager()
 bool FileManager::addNewFile(QString oldFilePath)
 {
     SettingsManager settings;
-    QString importMode = settings.getImportMode(AccessControlSystem::instance().getSessionPath());
+    QString importMode = settings.getImportMode();
 
     QFile oldFile;
     QUrl url = oldFilePath;

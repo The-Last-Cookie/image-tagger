@@ -7,6 +7,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include "AccountManagement/accesscontrolsystem.h"
+
 class SettingsManager : public QObject
 {
     Q_OBJECT
@@ -15,19 +17,17 @@ class SettingsManager : public QObject
         explicit SettingsManager(QObject *parent = nullptr);
         ~SettingsManager();
 
-        QJsonObject createDefaultSettingsFile();
-
     public slots:
-        QString getImportMode(QString path);
-        void setImportMode(QString path, QString mode);
+        QString getImportMode();
+        void setImportMode(QString mode);
 
-        QString getTheme(QString path);
-        void setTheme(QString path, QString theme);
+        QString getTheme();
+        void setTheme(QString theme);
 
-        bool getEncryption(QString path);
-        void setEncryption(QString path, bool encryption);
+        bool getEncryption();
+        void setEncryption(bool encryption);
 
-        QString getLanguage(QString path);
-        void setLanguage(QString path, QString language);
+        QString getLanguage();
+        void setLanguage(QString language);
 };
 

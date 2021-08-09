@@ -153,8 +153,7 @@ void UserManager::createUserFiles(QString path)
     dbm.closeConnection();
 
     // Create settings.json
-    SettingsManager settingsManager;
-    QJsonObject settings = settingsManager.createDefaultSettingsFile();
+    QJsonObject settings = createDefaultSettingsFile();
 
     QFile file;
     file.setFileName("data/" + path + "/settings.json");
@@ -208,6 +207,17 @@ QString UserManager::createUserPath()
     QString newFileName = QString::fromStdString(StringCalc::Decimal::add(lastFileName.toStdString(), "1"));
 
     return newFileName;
+}
+
+QJsonObject UserManager::createDefaultSettingsFile()
+{
+    QJsonObject settings;
+    settings.insert("language", "en");
+    settings.insert("theme", "white");
+    settings.insert("encryption", true);
+    settings.insert("import_mode", "move");
+
+    return settings;
 }
 
 bool UserManager::changePassword(QString path, QString hash)

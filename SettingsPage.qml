@@ -61,7 +61,7 @@ Item {
                 text: qsTr("Encrypt files")
 
                 onCheckStateChanged: {
-                    settings.setEncryption(AccessControlSystem.getSessionPath(), encryption.checked)
+                    settings.setEncryption(encryption.checked)
                 }
 
                 enabled: false
