@@ -10,10 +10,10 @@ FileManager::~FileManager()
 
 }
 
-bool FileManager::addNewFile(QString path, QString oldFilePath)
+bool FileManager::addNewFile(QString oldFilePath)
 {
     SettingsManager settings;
-    QString importMode = settings.getImportMode(path);
+    QString importMode = settings.getImportMode(AccessControlSystem::instance().getSessionPath());
 
     QFile oldFile;
     QUrl url = oldFilePath;
@@ -32,7 +32,7 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     QString added = DateUtils::getDate("YYYY-MM-DD");
     QString size = QString::number(oldFile.size());
 
-    QString newFilePath = QDir::currentPath() + "/data/" + path + "/images/" + name + "." + extension;
+    QString newFilePath = QDir::currentPath() + "/data/" + AccessControlSystem::instance().getSessionPath() + "/images/" + name + "." + extension;
     if (!oldFile.copy(oldFilePath, newFilePath)) {
         return false;
     }
@@ -42,7 +42,7 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     }
 
     DatabaseManager dbm;
-    dbm.openConnection(path);
+    dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;
     query.prepare("INSERT INTO files (fileId, name, extension, added, size) "
@@ -59,16 +59,16 @@ bool FileManager::addNewFile(QString path, QString oldFilePath)
     return true;
 }
 
-bool FileManager::deleteFile(QString path, int fileId, QString name, QString extension)
+bool FileManager::deleteFile(int fileId, QString name, QString extension)
 {
     QFile file;
-    file.setFileName(QDir::currentPath() + "/data/" + path + "/" + name + "." + extension);
+    file.setFileName(QDir::currentPath() + "/data/" + AccessControlSystem::instance().getSessionPath() + "/" + name + "." + extension);
     if (!file.remove()) {
         return false;
     }
 
     DatabaseManager dbm;
-    dbm.openConnection(path);
+    dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;
     query.prepare("DELETE FROM files WHERE fileId = :fileId;");

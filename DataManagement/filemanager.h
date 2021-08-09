@@ -11,6 +11,7 @@
 #include "settingsmanager.h"
 #include "dateutils.h"
 #include "databasemanager.h"
+#include "AccountManagement/accesscontrolsystem.h"
 
 class FileManager : public QObject
 {
@@ -21,7 +22,7 @@ class FileManager : public QObject
         ~FileManager();
 
     public slots:
-        bool addNewFile(QString path, QString oldFilePath);
-        bool deleteFile(QString path, int fileId, QString name, QString extension);
+        bool addNewFile(QString oldFilePath);
+        bool deleteFile(int fileId, QString name, QString extension);
 };
 
