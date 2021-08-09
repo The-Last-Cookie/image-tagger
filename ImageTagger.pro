@@ -22,6 +22,10 @@ SOURCES += \
         AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
+        DataManagement/Search/searchmanager.cpp \
+        DataManagement/Search/searchresult.cpp \
+        DataManagement/Search/searchutils.cpp \
+        DataManagement/basicfile.cpp \
         DataManagement/filemanager.cpp \
         StringCalc/binary.cpp \
         StringCalc/converter.cpp \
@@ -40,6 +44,10 @@ HEADERS += \
     AccountManagement/session.h \
     AccountManagement/user.h \
     AccountManagement/usermanager.h \
+    DataManagement/Search/searchmanager.h \
+    DataManagement/Search/searchresult.h \
+    DataManagement/Search/searchutils.h \
+    DataManagement/basicfile.h \
     DataManagement/filemanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
