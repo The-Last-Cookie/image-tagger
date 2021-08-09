@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
+import Qt.labs.settings 1.0
 
 import AccessControlSystem 1.0
 import Settings 1.0
@@ -30,8 +31,10 @@ Item {
                 }
 
                 onCurrentIndexChanged: {
-                    //settings.setLanguage(AccessControlSystem.getSessionPath(), Language.getTwoLetterCode(languages.get(currentIndex).text))
+                    //settings.setLanguage(AccessControlSystem.getSessionPath(), Language.getCode(languages.get(currentIndex).text))
                 }
+
+                enabled: false
             }
         }
 
@@ -43,6 +46,8 @@ Item {
 
             ComboBox {
                 model: [qsTr("White"), qsTr("Dark")]
+
+                enabled: false
             }
         }
 
@@ -55,11 +60,12 @@ Item {
             CheckBox {
                 id: encryption
                 text: qsTr("Encrypt files")
-                //checkState: settings.getEncryption(AccessControlSystem.getSessionPath())
 
                 onCheckStateChanged: {
                     settings.setEncryption(AccessControlSystem.getSessionPath(), encryption.checked)
                 }
+
+                enabled: false
             }
         }
 
@@ -71,6 +77,8 @@ Item {
 
             ComboBox {
                 model: [qsTr("Move"), qsTr("Copy")]
+
+                enabled: false
             }
         }
 
