@@ -74,13 +74,12 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        // TODO: add added and size via bindValue
-        /*if (keyword == "added") {
+        if (keyword == "added") {
             if (oneArgOrMoreAppended) {
                 query.append(" AND ");
             }
 
-            query.append("files.added = \"" + getValue(args.at(i)) + "\"");
+            query.append("files.added = ?");
             oneArgOrMoreAppended = true;
         }
 
@@ -89,9 +88,9 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 query.append(" AND ");
             }
 
-            query.append("files.size = " + getValue(args.at(i)));
+            query.append("files.size = ?");
             oneArgOrMoreAppended = true;
-        }*/
+        }
     }
     oneArgOrMoreAppended = false;
 

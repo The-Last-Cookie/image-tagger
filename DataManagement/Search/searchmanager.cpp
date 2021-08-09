@@ -22,7 +22,16 @@ void SearchManager::retrieveSearchResult(QString searchQuery)
     QSqlQuery query;
     query.prepare(searchQuery);
     for (int i = 0; i < m_args.size(); i++) {
-        query.bindValue(i, QString("%%1%").arg(SearchUtils::getValue(m_args.at(i))));
+        if (SearchUtils::getKeyword(m_args.at(i)) == "added") {
+            // Dates (String)
+            query.bindValue(i, QString(SearchUtils::getValue(m_args.at(i))));
+        } else if (SearchUtils::getKeyword(m_args.at(i)) == "size") {
+            // Size (Integer)
+            query.bindValue(i, QString(SearchUtils::getValue(m_args.at(i))).toInt());
+        } else {
+            // Normal text, used with the LIKE operator
+            query.bindValue(i, QString("%%1%").arg(SearchUtils::getValue(m_args.at(i))));
+        }
     }
     query.exec();
 
