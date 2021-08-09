@@ -20,7 +20,11 @@ void SearchManager::retrieveSearchResult(QString searchQuery)
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;
-    query.exec(searchQuery);
+    query.prepare(searchQuery);
+    for (int i = 0; i < m_args.size(); i++) {
+        query.bindValue(i, QString("%%1%").arg(SearchUtils::getValue(m_args.at(i))));
+    }
+    query.exec();
 
     SearchResult result;
     while (query.next()) {

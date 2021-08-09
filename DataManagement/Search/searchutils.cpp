@@ -43,10 +43,7 @@ QVector<QString> SearchUtils::toSingleArgs(QString query)
 
 QString SearchUtils::convertToSqlQuery(QVector<QString> args)
 {
-    QString query = "SELECT fileId, name, extension FROM files files "
-                    "INNER JOIN files_tags f_t INNER JOIN tags tags "
-                    "ON files.fileId = f_t.fileId "
-                    "AND tags.tagId = f_t.tagId";
+    QString query = "SELECT fileId, name, extension FROM files files";
 
     if (args.size() == 0) {
         query.append(";");
@@ -55,25 +52,101 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
         query.append(" WHERE ");
     }
 
-    // Add keywords to query
+    // Add keywords related to files and tags to query
     bool oneArgOrMoreAppended = false;
     for (int i = 0; i < args.size(); i++) {
-        if (!hasKeyword(args.at(i))) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "" || keyword == "name") {
             if (oneArgOrMoreAppended) {
                 query.append(" AND ");
             }
 
-            query.append("files.name = " + args.at(i));
+            query.append("files.name LIKE ?");
             oneArgOrMoreAppended = true;
         }
 
+        if (keyword == "ext") {
+            if (oneArgOrMoreAppended) {
+                query.append(" AND ");
+            }
+
+            query.append("files.extension LIKE ?");
+            oneArgOrMoreAppended = true;
+        }
+
+        // TODO: add added and size via bindValue
+        /*if (keyword == "added") {
+            if (oneArgOrMoreAppended) {
+                query.append(" AND ");
+            }
+
+            query.append("files.added = \"" + getValue(args.at(i)) + "\"");
+            oneArgOrMoreAppended = true;
+        }
+
+        if (keyword == "size") {
+            if (oneArgOrMoreAppended) {
+                query.append(" AND ");
+            }
+
+            query.append("files.size = " + getValue(args.at(i)));
+            oneArgOrMoreAppended = true;
+        }*/
+    }
+    oneArgOrMoreAppended = false;
+
+    // Add keywords related to files and tags
+    for (int i = 0; i < args.size(); i++) {
         QString keyword = getKeyword(args.at(i));
         if (keyword == "t") {
             if (oneArgOrMoreAppended) {
                 query.append(" AND ");
+            } else {
+                query.append(" UNION SELECT fileId, name, extension FROM files files "
+                             "INNER JOIN files_tags f_t INNER JOIN tags tags "
+                             "ON files.fileId = f_t.fileId "
+                             "AND tags.tagId = f_t.tagId WHERE ");
             }
 
-            query.append("tags.name = " + getValue(args.at(i)));
+            query.append("tags.name LIKE ?");
+            oneArgOrMoreAppended = true;
+        }
+    }
+    oneArgOrMoreAppended = false;
+
+    // Add keywords related to files and authors
+    for (int i = 0; i < args.size(); i++) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "a") {
+            if (oneArgOrMoreAppended) {
+                query.append(" AND ");
+            } else {
+                query.append(" UNION SELECT fileId, name, extension FROM files files "
+                             "INNER JOIN files_tags f_t INNER JOIN authors authors "
+                             "ON files.fileId = f_t.fileId "
+                             "AND authors.authorId = f_t.authorId WHERE ");
+            }
+
+            query.append("authors.name LIKE ?");
+            oneArgOrMoreAppended = true;
+        }
+    }
+    oneArgOrMoreAppended = false;
+
+    // Add keywords related to files and groups
+    for (int i = 0; i < args.size(); i++) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "g") {
+            if (oneArgOrMoreAppended) {
+                query.append(" AND ");
+            } else {
+                query.append(" UNION SELECT fileId, name, extension FROM files files "
+                             "INNER JOIN files_tags f_t INNER JOIN groups groups "
+                             "ON files.fileId = f_t.fileId "
+                             "AND groups.groupId = f_t.groupId WHERE ");
+            }
+
+            query.append("groups.name LIKE ?");
             oneArgOrMoreAppended = true;
         }
     }
@@ -126,7 +199,8 @@ QString SearchUtils::sanitizeArg(QString string)
             || c == "+"
             || c == "\\"
             || c == "/"
-            || c == "#") {
+            || c == "#"
+            || c == "_") {
             string.remove(i, 1);
         }
     }

@@ -59,6 +59,7 @@ Item {
 
                     textField.onEditingFinished: {
                         searchManager.retrieveSearchResult(textField.text)
+                        //fileListView.setResult(searchManager.getResult())
                     }
                 }
 
@@ -84,6 +85,7 @@ Item {
             }
 
             UIComponents.FileListView {
+                id: fileListView
                 anchors.top: actionMenu.bottom
                 anchors.topMargin: 10
                 anchors.left: parent.left
