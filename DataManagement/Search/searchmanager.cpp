@@ -17,6 +17,7 @@ void SearchManager::retrieveSearchResult(QString searchQuery)
     searchQuery = SearchUtils::convertToSqlQuery(m_args);
 
     DatabaseManager dbm;
+    dbm.setHostname("SearchManager");
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;

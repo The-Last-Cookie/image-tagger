@@ -51,6 +51,7 @@ void UserManager::createUserFiles(QString path)
 
     // Create database
     DatabaseManager dbm;
+    dbm.setHostname("UserManager");
     dbm.openConnection(path);
 
     QSqlQuery query;

@@ -33,6 +33,7 @@ bool FileManager::addNewFile(QString oldFilePath)
     QString size = QString::number(oldFile.size());
 
     QString newFilePath = QDir::currentPath() + "/data/" + AccessControlSystem::instance().getSessionPath() + "/images/" + name + "." + extension;
+    qDebug() << oldFilePath << "\n" << newFilePath;
     if (!oldFile.copy(oldFilePath, newFilePath)) {
         return false;
     }
@@ -42,6 +43,7 @@ bool FileManager::addNewFile(QString oldFilePath)
     }
 
     DatabaseManager dbm;
+    dbm.setHostname("FileManager");
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
 
     QSqlQuery query;
