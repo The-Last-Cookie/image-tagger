@@ -6,7 +6,7 @@ Item {
 
     property string defaultText: "Text"
     property color defaultTextColor: "grey"
-    property int defaultMaximumLength: 50
+    property int defaultMaximumLength: 200
 
     property color backgroundColor: "white"
     property color borderColor: "black"
