@@ -25,4 +25,3 @@ class FileManager : public QObject
         bool addNewFile(QString oldFilePath);
         bool deleteFile(int fileId, QString name, QString extension);
 };
-
