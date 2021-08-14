@@ -94,7 +94,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "ext") {
+        else if (keyword == "ext") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
@@ -103,7 +103,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "added") {
+        else if (keyword == "added") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
@@ -112,7 +112,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "size") {
+        else if (keyword == "size") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
@@ -121,7 +121,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "t") {
+        else if (keyword == "t") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
@@ -130,7 +130,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "a") {
+        else if (keyword == "a") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
@@ -139,7 +139,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
             oneArgOrMoreAppended = true;
         }
 
-        if (keyword == "g") {
+        else if (keyword == "g") {
             if (oneArgOrMoreAppended) {
                 queryUtils.addAndOperator();
             }
