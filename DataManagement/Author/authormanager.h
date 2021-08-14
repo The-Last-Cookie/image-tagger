@@ -1,9 +1,21 @@
 #pragma once
 
+#include <QObject>
 
-class AuthorManager
+#include "AccountManagement/accesscontrolsystem.h"
+#include "databasemanager.h"
+
+class AuthorManager : public QObject
 {
-public:
-    AuthorManager();
+    Q_OBJECT
+
+    public:
+        explicit AuthorManager(QObject *parent = nullptr);
+        ~AuthorManager();
+
+    public slots:
+        bool createAuthor(QString name, QString description);
+        void addAuthorToFile(int authorId, int fileId);
+        bool deleteAuthor(int auhorId);
 };
 
