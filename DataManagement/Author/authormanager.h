@@ -16,6 +16,5 @@ class AuthorManager : public QObject
     public slots:
         bool createAuthor(QString name, QString description);
         void addAuthorToFile(int authorId, int fileId);
-        bool deleteAuthor(int auhorId);
+        bool deleteAuthor(int authorId);
 };
-
