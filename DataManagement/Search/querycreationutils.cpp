@@ -35,10 +35,10 @@ void QueryCreationUtils::prepareGroupString()
     m_query.append("INNER JOIN files_groups f_g INNER JOIN groups groups ");
 }
 
-void QueryCreationUtils::addFileArgument(QueryCreationUtils::ArgumentType argType)
+void QueryCreationUtils::addArgument(QueryCreationUtils::ArgumentType argType)
 {
     switch (argType) {
-        case Name:
+        case Filename:
             m_query.append("files.name LIKE ?");
             break;
 
@@ -54,24 +54,21 @@ void QueryCreationUtils::addFileArgument(QueryCreationUtils::ArgumentType argTyp
             m_query.append("files.added = ?");
             break;
 
+        case Tag:
+            m_query.append("tags.name LIKE ?");
+            break;
+
+        case Author:
+            m_query.append("authors.name LIKE ?");
+            break;
+
+        case Group:
+            m_query.append("groups.name LIKE ?");
+            break;
+
         default:
             break;
     }
-}
-
-void QueryCreationUtils::addTagArgument()
-{
-    m_query.append("tags.name LIKE ?");
-}
-
-void QueryCreationUtils::addAuthorArgument()
-{
-    m_query.append("authors.name LIKE ?");
-}
-
-void QueryCreationUtils::addGroupArgument()
-{
-    m_query.append("groups.name LIKE ?");
 }
 
 void QueryCreationUtils::addAndOperator()

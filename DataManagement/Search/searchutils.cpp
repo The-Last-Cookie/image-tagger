@@ -90,7 +90,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addFileArgument(QueryCreationUtils::Name);
+            queryUtils.addArgument(QueryCreationUtils::Filename);
             oneArgOrMoreAppended = true;
         }
 
@@ -99,7 +99,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addFileArgument(QueryCreationUtils::Extension);
+            queryUtils.addArgument(QueryCreationUtils::Extension);
             oneArgOrMoreAppended = true;
         }
 
@@ -108,7 +108,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addFileArgument(QueryCreationUtils::Date);
+            queryUtils.addArgument(QueryCreationUtils::Date);
             oneArgOrMoreAppended = true;
         }
 
@@ -117,7 +117,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addFileArgument(QueryCreationUtils::Size);
+            queryUtils.addArgument(QueryCreationUtils::Size);
             oneArgOrMoreAppended = true;
         }
 
@@ -126,7 +126,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addTagArgument();
+            queryUtils.addArgument(QueryCreationUtils::Tag);
             oneArgOrMoreAppended = true;
         }
 
@@ -135,7 +135,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addAuthorArgument();
+            queryUtils.addArgument(QueryCreationUtils::Author);
             oneArgOrMoreAppended = true;
         }
 
@@ -144,7 +144,7 @@ QString SearchUtils::convertToSqlQuery(QVector<QString> args)
                 queryUtils.addAndOperator();
             }
 
-            queryUtils.addGroupArgument();
+            queryUtils.addArgument(QueryCreationUtils::Group);
             oneArgOrMoreAppended = true;
         }
     }

@@ -9,10 +9,13 @@ class QueryCreationUtils
         ~QueryCreationUtils();
 
         enum ArgumentType {
-            Name,
+            Filename,
             Extension,
             Size,
-            Date
+            Date,
+            Tag,
+            Author,
+            Group
         };
 
         void prepareFileString();
@@ -20,13 +23,7 @@ class QueryCreationUtils
         void prepareAuthorString();
         void prepareGroupString();
 
-        void addFileArgument(ArgumentType argType);
-
-        void addTagArgument();
-
-        void addAuthorArgument();
-
-        void addGroupArgument();
+        void addArgument(ArgumentType argType);
 
         void addAndOperator();
 
