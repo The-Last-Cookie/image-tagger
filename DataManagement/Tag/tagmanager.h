@@ -1,9 +1,20 @@
 #pragma once
 
+#include <QObject>
 
-class TagManager
+#include "AccountManagement/accesscontrolsystem.h"
+#include "databasemanager.h"
+
+class TagManager : public QObject
 {
-public:
-    TagManager();
-};
+    Q_OBJECT
 
+    public:
+        explicit TagManager(QObject *parent = nullptr);
+        ~TagManager();
+
+    public slots:
+        bool createTag(QString name, QString description);
+        void addTagToFile(int tagId, int fileId);
+        bool deleteTag(int tagId);
+};
