@@ -5,7 +5,7 @@
 
 #include "logger.h"
 #include "AccountManagement/accesscontrolsystem.h"
-#include "DataManagement/filemanager.h"
+#include "DataManagement/File/filemanager.h"
 #include "settingsmanager.h"
 #include "DataManagement/Search/searchmanager.h"
 #include "DataManagement/Search/searchresult.h"

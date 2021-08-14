@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QVector>
 
-#include "../basicfile.h"
+#include "../File/basicfile.h"
 
 class SearchResult : QObject
 {

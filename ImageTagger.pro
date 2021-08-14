@@ -22,12 +22,18 @@ SOURCES += \
         AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
+        DataManagement/Author/authormanager.cpp \
+        DataManagement/Author/basicauthor.cpp \
+        DataManagement/File/basicfile.cpp \
+        DataManagement/File/filemanager.cpp \
+        DataManagement/Group/basicgroup.cpp \
+        DataManagement/Group/groupmanager.cpp \
         DataManagement/Search/querycreationutils.cpp \
         DataManagement/Search/searchmanager.cpp \
         DataManagement/Search/searchresult.cpp \
         DataManagement/Search/searchutils.cpp \
-        DataManagement/basicfile.cpp \
-        DataManagement/filemanager.cpp \
+        DataManagement/Tag/basictag.cpp \
+        DataManagement/Tag/tagmanager.cpp \
         StringCalc/binary.cpp \
         StringCalc/converter.cpp \
         StringCalc/decimal.cpp \
@@ -45,12 +51,18 @@ HEADERS += \
     AccountManagement/session.h \
     AccountManagement/user.h \
     AccountManagement/usermanager.h \
+    DataManagement/Author/authormanager.h \
+    DataManagement/Author/basicauthor.h \
+    DataManagement/File/basicfile.h \
+    DataManagement/File/filemanager.h \
+    DataManagement/Group/basicgroup.h \
+    DataManagement/Group/groupmanager.h \
     DataManagement/Search/querycreationutils.h \
     DataManagement/Search/searchmanager.h \
     DataManagement/Search/searchresult.h \
     DataManagement/Search/searchutils.h \
-    DataManagement/basicfile.h \
-    DataManagement/filemanager.h \
+    DataManagement/Tag/basictag.h \
+    DataManagement/Tag/tagmanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     databasemanager.h \
