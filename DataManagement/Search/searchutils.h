@@ -3,6 +3,8 @@
 #include <QVector>
 #include <QString>
 
+#include "querycreationutils.h"
+
 class SearchUtils
 {
     public:

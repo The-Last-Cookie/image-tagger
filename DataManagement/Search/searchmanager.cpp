@@ -30,7 +30,7 @@ void SearchManager::retrieveSearchResult(QString searchQuery)
             // Size (Integer)
             query.bindValue(i, QString(SearchUtils::getValue(m_args.at(i))).toInt());
         } else {
-            // Normal text, used with the LIKE operator
+            // use LIKE operator on Name, Extension, Tag, Author, Group
             query.bindValue(i, QString("%%1%").arg(SearchUtils::getValue(m_args.at(i))));
         }
     }

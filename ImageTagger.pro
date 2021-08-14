@@ -22,6 +22,7 @@ SOURCES += \
         AccountManagement/session.cpp \
         AccountManagement/user.cpp \
         AccountManagement/usermanager.cpp \
+        DataManagement/Search/querycreationutils.cpp \
         DataManagement/Search/searchmanager.cpp \
         DataManagement/Search/searchresult.cpp \
         DataManagement/Search/searchutils.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     AccountManagement/session.h \
     AccountManagement/user.h \
     AccountManagement/usermanager.h \
+    DataManagement/Search/querycreationutils.h \
     DataManagement/Search/searchmanager.h \
     DataManagement/Search/searchresult.h \
     DataManagement/Search/searchutils.h \

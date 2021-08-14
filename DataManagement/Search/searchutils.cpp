@@ -43,115 +43,114 @@ QVector<QString> SearchUtils::toSingleArgs(QString query)
 
 QString SearchUtils::convertToSqlQuery(QVector<QString> args)
 {
-    QString query = "SELECT fileId, name, extension FROM files files";
+    QString finishedQuery;
+
+    QueryCreationUtils queryUtils;
+    queryUtils.prepareFileString();
 
     if (args.size() == 0) {
-        query.append(";");
-        return query;
-    } else {
-        query.append(" WHERE ");
+        finishedQuery = queryUtils.finishQueryCreation();
+        return finishedQuery;
     }
 
-    // Add keywords related to files and tags to query
+    // Check if JOINS in the SELECT statement are needed
+    for (int i = 0; i < args.size(); i++) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "t") {
+            queryUtils.prepareTagString();
+            break;
+        }
+    }
+
+    for (int i = 0; i < args.size(); i++) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "a") {
+            queryUtils.prepareAuthorString();
+            break;
+        }
+    }
+
+    for (int i = 0; i < args.size(); i++) {
+        QString keyword = getKeyword(args.at(i));
+        if (keyword == "g") {
+            queryUtils.prepareGroupString();
+            break;
+        }
+    }
+
+    queryUtils.finishPreparation();
+    queryUtils.prepareAddingArguments();
+
+    // Add all arguments
     bool oneArgOrMoreAppended = false;
     for (int i = 0; i < args.size(); i++) {
         QString keyword = getKeyword(args.at(i));
         if (keyword == "" || keyword == "name") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("files.name LIKE ?");
+            queryUtils.addFileArgument(QueryCreationUtils::Name);
             oneArgOrMoreAppended = true;
         }
 
         if (keyword == "ext") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("files.extension LIKE ?");
+            queryUtils.addFileArgument(QueryCreationUtils::Extension);
             oneArgOrMoreAppended = true;
         }
 
         if (keyword == "added") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("files.added = ?");
+            queryUtils.addFileArgument(QueryCreationUtils::Date);
             oneArgOrMoreAppended = true;
         }
 
         if (keyword == "size") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("files.size = ?");
+            queryUtils.addFileArgument(QueryCreationUtils::Size);
             oneArgOrMoreAppended = true;
         }
-    }
-    oneArgOrMoreAppended = false;
 
-    // Add keywords related to files and tags
-    for (int i = 0; i < args.size(); i++) {
-        QString keyword = getKeyword(args.at(i));
         if (keyword == "t") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
-            } else {
-                query.append(" UNION SELECT fileId, name, extension FROM files files "
-                             "INNER JOIN files_tags f_t INNER JOIN tags tags "
-                             "ON files.fileId = f_t.fileId "
-                             "AND tags.tagId = f_t.tagId WHERE ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("tags.name LIKE ?");
+            queryUtils.addTagArgument();
             oneArgOrMoreAppended = true;
         }
-    }
-    oneArgOrMoreAppended = false;
 
-    // Add keywords related to files and authors
-    for (int i = 0; i < args.size(); i++) {
-        QString keyword = getKeyword(args.at(i));
         if (keyword == "a") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
-            } else {
-                query.append(" UNION SELECT fileId, name, extension FROM files files "
-                             "INNER JOIN files_tags f_t INNER JOIN authors authors "
-                             "ON files.fileId = f_t.fileId "
-                             "AND authors.authorId = f_t.authorId WHERE ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("authors.name LIKE ?");
+            queryUtils.addAuthorArgument();
             oneArgOrMoreAppended = true;
         }
-    }
-    oneArgOrMoreAppended = false;
 
-    // Add keywords related to files and groups
-    for (int i = 0; i < args.size(); i++) {
-        QString keyword = getKeyword(args.at(i));
         if (keyword == "g") {
             if (oneArgOrMoreAppended) {
-                query.append(" AND ");
-            } else {
-                query.append(" UNION SELECT fileId, name, extension FROM files files "
-                             "INNER JOIN files_tags f_t INNER JOIN groups groups "
-                             "ON files.fileId = f_t.fileId "
-                             "AND groups.groupId = f_t.groupId WHERE ");
+                queryUtils.addAndOperator();
             }
 
-            query.append("groups.name LIKE ?");
+            queryUtils.addGroupArgument();
             oneArgOrMoreAppended = true;
         }
     }
 
-    query.append(";");
-    return query;
+    finishedQuery = queryUtils.finishQueryCreation();
+    return finishedQuery;
 }
 
 bool SearchUtils::hasKeyword(QString string) {
