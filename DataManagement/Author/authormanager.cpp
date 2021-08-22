@@ -12,8 +12,8 @@ AuthorManager::~AuthorManager()
 
 bool AuthorManager::createAuthor(QString name, QString description)
 {
-    if (name.isEmpty() || name.contains(" ")) {
-            return false;
+    if (!InputValidationUtils::isValidString(name)) {
+        return false;
     }
 
     DatabaseManager dbm;

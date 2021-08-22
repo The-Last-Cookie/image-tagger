@@ -12,7 +12,7 @@ TagManager::~TagManager()
 
 bool TagManager::createTag(QString name, QString description)
 {
-    if (name.isEmpty() || name.contains(" ")) {
+    if (!InputValidationUtils::isValidString(name)) {
         return false;
     }
 

@@ -4,6 +4,7 @@
 
 #include "AccountManagement/accesscontrolsystem.h"
 #include "databasemanager.h"
+#include "inputvalidationutils.h"
 
 class AuthorManager : public QObject
 {

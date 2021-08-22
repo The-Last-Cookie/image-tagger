@@ -33,7 +33,7 @@ QVector<QString> SearchUtils::toSingleArgs(QString query)
         QString temp = query.mid(position + 1, query.length() - position + 1);
         query.remove(position, temp.length() + 1);
 
-        temp = sanitizeArg(temp);
+        temp = InputValidationUtils::sanitizeSearchArg(temp);
 
         args.append(temp);
     }
@@ -182,25 +182,4 @@ QString SearchUtils::getValue(QString string)
     }
 
     return string.mid(position + 1, string.length() - position + 1);
-}
-
-QString SearchUtils::sanitizeArg(QString string)
-{
-    while (string.count(":") > 1) {
-        string.remove(string.lastIndexOf(":"), 1);
-    }
-
-    for (int i = 0; i < string.length(); i++) {
-        QChar c = string.at(i);
-
-        if (c == "*"
-            || c == "+"
-            || c == "\\"
-            || c == "/"
-            || c == "#") {
-            string.remove(i, 1);
-        }
-    }
-
-    return string;
 }

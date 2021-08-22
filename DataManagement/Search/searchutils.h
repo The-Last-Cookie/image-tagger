@@ -4,6 +4,7 @@
 #include <QString>
 
 #include "querycreationutils.h"
+#include "inputvalidationutils.h"
 
 class SearchUtils
 {
@@ -17,5 +18,4 @@ class SearchUtils
         static bool hasKeyword(QString string);
         static QString getKeyword(QString string);
         static QString getValue(QString string);
-        static QString sanitizeArg(QString string);
 };
