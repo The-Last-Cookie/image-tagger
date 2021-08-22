@@ -10,4 +10,3 @@ class InputValidationUtils
         static QString sanitizeSearchArg(QString string);
         static bool isValidString(QString string);
 };
-
