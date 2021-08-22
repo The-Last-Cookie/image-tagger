@@ -16,7 +16,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
+test {
+    message(Test build)
+    QT += testlib
+    QT -= gui
+    TARGET = demo-test
+    CONFIG += no_testcase_installs
+
+    SOURCES += \
+    Testing/testing.cpp \
+        Testing/testinputvalidationutils.cpp
+
+    HEADERS += \
+        Testing/testinputvalidationutils.h
+} else {
+    message(Normal build)
+
+    SOURCES += \
         AccountManagement/accesscontrolsystem.cpp \
         AccountManagement/passwordmanager.cpp \
         AccountManagement/session.cpp \
@@ -46,31 +62,32 @@ SOURCES += \
         main.cpp \
         settingsmanager.cpp
 
-HEADERS += \
-    AccountManagement/accesscontrolsystem.h \
-    AccountManagement/passwordmanager.h \
-    AccountManagement/session.h \
-    AccountManagement/user.h \
-    AccountManagement/usermanager.h \
-    DataManagement/Author/authormanager.h \
-    DataManagement/Author/basicauthor.h \
-    DataManagement/File/basicfile.h \
-    DataManagement/File/filemanager.h \
-    DataManagement/Group/basicgroup.h \
-    DataManagement/Group/groupmanager.h \
-    DataManagement/Search/querycreationutils.h \
-    DataManagement/Search/searchmanager.h \
-    DataManagement/Search/searchresult.h \
-    DataManagement/Search/searchutils.h \
-    DataManagement/Tag/basictag.h \
-    DataManagement/Tag/tagmanager.h \
-    StringCalc/converter.h \
-    StringCalc/stringcalc.h \
-    Utils/dateutils.h \
-    Utils/inputvalidationutils.h \
-    databasemanager.h \
-    logger.h \
-    settingsmanager.h
+    HEADERS += \
+        AccountManagement/accesscontrolsystem.h \
+        AccountManagement/passwordmanager.h \
+        AccountManagement/session.h \
+        AccountManagement/user.h \
+        AccountManagement/usermanager.h \
+        DataManagement/Author/authormanager.h \
+        DataManagement/Author/basicauthor.h \
+        DataManagement/File/basicfile.h \
+        DataManagement/File/filemanager.h \
+        DataManagement/Group/basicgroup.h \
+        DataManagement/Group/groupmanager.h \
+        DataManagement/Search/querycreationutils.h \
+        DataManagement/Search/searchmanager.h \
+        DataManagement/Search/searchresult.h \
+        DataManagement/Search/searchutils.h \
+        DataManagement/Tag/basictag.h \
+        DataManagement/Tag/tagmanager.h \
+        StringCalc/converter.h \
+        StringCalc/stringcalc.h \
+        Utils/dateutils.h \
+        Utils/inputvalidationutils.h \
+        databasemanager.h \
+        logger.h \
+        settingsmanager.h
+}
 
 RESOURCES += qml.qrc
 
