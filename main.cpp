@@ -6,6 +6,7 @@
 #include "logger.h"
 #include "AccountManagement/accesscontrolsystem.h"
 #include "DataManagement/File/filemanager.h"
+#include "DataManagement/Tag/tagmanager.h"
 #include "settingsmanager.h"
 #include "DataManagement/Search/searchmanager.h"
 #include "DataManagement/Search/searchresult.h"
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonInstance<AccessControlSystem>("AccessControlSystem", 1, 0, "AccessControlSystem", &AccessControlSystem::instance());
 
     qmlRegisterType<FileManager>("DataHandler", 1, 0, "FileManager");
+    qmlRegisterType<TagManager>("DataHandler", 1, 0, "TagManager");
     qmlRegisterType<SettingsManager>("Settings", 1, 0, "SettingsManager");
     qmlRegisterType<SearchManager>("Search", 1, 0, "SearchManager");
 
