@@ -197,8 +197,7 @@ QString SearchUtils::sanitizeArg(QString string)
             || c == "+"
             || c == "\\"
             || c == "/"
-            || c == "#"
-            || c == "_") {
+            || c == "#") {
             string.remove(i, 1);
         }
     }

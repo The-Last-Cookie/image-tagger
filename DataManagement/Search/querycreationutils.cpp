@@ -39,11 +39,11 @@ void QueryCreationUtils::addArgument(QueryCreationUtils::ArgumentType argType)
 {
     switch (argType) {
         case Filename:
-            m_query.append("files.name LIKE ?");
+            m_query.append("files.name LIKE ? ESCAPE '_'");
             break;
 
         case Extension:
-            m_query.append("files.extension LIKE ?");
+            m_query.append("files.extension LIKE ? ESCAPE '_'");
             break;
 
         case Size:
@@ -55,15 +55,15 @@ void QueryCreationUtils::addArgument(QueryCreationUtils::ArgumentType argType)
             break;
 
         case Tag:
-            m_query.append("tags.name LIKE ?");
+            m_query.append("tags.name LIKE ? ESCAPE '_'");
             break;
 
         case Author:
-            m_query.append("authors.name LIKE ?");
+            m_query.append("authors.name LIKE ? ESCAPE '_'");
             break;
 
         case Group:
-            m_query.append("groups.name LIKE ?");
+            m_query.append("groups.name LIKE ? ESCAPE '_'");
             break;
 
         default:
