@@ -1,5 +1,10 @@
 #include "logger.h"
 
+Logger::Logger() : m_path(QDir::currentPath())
+{
+
+}
+
 Logger::Logger(QString path) : m_path(path)
 {
 

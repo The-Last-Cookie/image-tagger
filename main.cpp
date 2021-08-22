@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-    Logger l(QDir::currentPath());
+    Logger l;
     l.info("Starting application");
 
     QDir dir;

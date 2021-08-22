@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QTextStream>
+#include <QDir>
 #include <QFile>
 
 #include "Utils/dateutils.h"
@@ -8,6 +9,7 @@
 class Logger
 {
     public:
+        Logger();
         Logger(QString path);
         ~Logger();
 

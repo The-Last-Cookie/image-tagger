@@ -262,7 +262,7 @@ bool UserManager::changePassword(QString path, QString hash)
 
 void UserManager::deleteUserFiles(QString path)
 {
-    Logger l(QDir::currentPath());
+    Logger l;
     l.info("Removing user files");
     QDir dir(QDir::currentPath() + "/data/" + path);
     dir.removeRecursively();
