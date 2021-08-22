@@ -79,6 +79,10 @@ Item {
                     Button {
                         text: "Add tag"
                         Layout.minimumWidth: 10
+
+                        onClicked: {
+                            dialogAddTag.open()
+                        }
                     }
                 }
             }
@@ -121,5 +125,9 @@ Item {
         icon: StandardIcon.Warning
         title: qsTr("Can't add file")
         text: qsTr("The file that you want to add, already exists.")
+    }
+
+    AddTagDialog {
+        id: dialogAddTag
     }
 }
