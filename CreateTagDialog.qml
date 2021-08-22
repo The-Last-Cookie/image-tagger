@@ -11,11 +11,11 @@ Item {
     id: root
 
     function open() {
-        dialogAddTag.show()
+        dialogCreateTag.show()
     }
 
     Window {
-        id: dialogAddTag
+        id: dialogCreateTag
         minimumHeight: 250
         minimumWidth: 250
         title: qsTr("Add a new tag")
@@ -62,7 +62,7 @@ Item {
                     text: qsTr("Cancel")
 
                     onClicked: {
-                        dialogAddTag.close()
+                        dialogCreateTag.close()
                     }
                 }
 
@@ -73,7 +73,7 @@ Item {
                         if (!tagManager.createTag(txtName.txt, txtDescription.text)) {
                             dialogTagAlreadyExists.visible = true
                         } else {
-                            dialogAddTag.close()
+                            dialogCreateTag.close()
                         }
                     }
                 }

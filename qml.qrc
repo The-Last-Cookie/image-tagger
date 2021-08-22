@@ -11,7 +11,7 @@
         <file>SettingsPage.qml</file>
         <file>LoginForm.qml</file>
         <file>CreateAccountForm.qml</file>
-        <file>AddTagDialog.qml</file>
+        <file>CreateTagDialog.qml</file>
     </qresource>
     <qresource prefix="/uicomponents">
         <file>FileListView.qml</file>

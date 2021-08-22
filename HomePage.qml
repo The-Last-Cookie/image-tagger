@@ -81,7 +81,7 @@ Item {
                         Layout.minimumWidth: 10
 
                         onClicked: {
-                            dialogAddTag.open()
+                            dialogCreateTag.open()
                         }
                     }
                 }
@@ -127,7 +127,7 @@ Item {
         text: qsTr("The file that you want to add, already exists.")
     }
 
-    AddTagDialog {
-        id: dialogAddTag
+    CreateTagDialog {
+        id: dialogCreateTag
     }
 }
