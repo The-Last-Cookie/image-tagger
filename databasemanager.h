@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlError>
 #include <QSqlDriver>
 #include <QDir>
 
