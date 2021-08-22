@@ -4,7 +4,7 @@
 #include <QString>
 
 #include "querycreationutils.h"
-#include "inputvalidationutils.h"
+#include "Utils/inputvalidationutils.h"
 
 class SearchUtils
 {

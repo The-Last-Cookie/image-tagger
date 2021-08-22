@@ -39,9 +39,9 @@ SOURCES += \
         StringCalc/decimal.cpp \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
+        Utils/dateutils.cpp \
+        Utils/inputvalidationutils.cpp \
         databasemanager.cpp \
-        dateutils.cpp \
-        inputvalidationutils.cpp \
         logger.cpp \
         main.cpp \
         settingsmanager.cpp
@@ -66,9 +66,9 @@ HEADERS += \
     DataManagement/Tag/tagmanager.h \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
+    Utils/dateutils.h \
+    Utils/inputvalidationutils.h \
     databasemanager.h \
-    dateutils.h \
-    inputvalidationutils.h \
     logger.h \
     settingsmanager.h
 

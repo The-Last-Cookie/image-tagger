@@ -12,7 +12,7 @@ GroupManager::~GroupManager()
 
 bool GroupManager::createGroup(QString name, QString description)
 {
-    if (name.isEmpty() || name.contains(" ")) {
+    if (!InputValidationUtils::isValidString(name)) {
         return false;
     }
 
