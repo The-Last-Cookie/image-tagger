@@ -19,6 +19,7 @@ Item {
         minimumHeight: 250
         minimumWidth: 250
         title: qsTr("Add a new tag")
+        modality: Qt.WindowModal
 
         ColumnLayout {
             anchors.top: parent.top
@@ -70,7 +71,7 @@ Item {
                     text: qsTr("Add new Tag")
 
                     onClicked: {
-                        if (!tagManager.createTag(txtName.txt, txtDescription.text)) {
+                        if (!tagManager.createTag(txtName.text, txtDescription.text)) {
                             dialogTagAlreadyExists.visible = true
                         } else {
                             dialogCreateTag.close()
@@ -80,7 +81,7 @@ Item {
             }
 
             UIComponents.InfoLabel {
-                id: dialogFileAlreadyExists
+                id: dialogTagAlreadyExists
                 Layout.preferredHeight: 60
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignCenter
@@ -88,7 +89,7 @@ Item {
                 Layout.rightMargin: 30
                 visible: false
 
-                textLabel: qsTr("The tag with this name is not allowed or already exists.")
+                textLabel: qsTr("The tag with this name is not allowed or exists already.")
             }
         }
     }
