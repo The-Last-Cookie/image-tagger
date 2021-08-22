@@ -12,6 +12,10 @@ GroupManager::~GroupManager()
 
 bool GroupManager::createGroup(QString name, QString description)
 {
+    if (name == "") {
+        return false;
+    }
+
     DatabaseManager dbm;
     dbm.setHostname("GroupManager");
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
@@ -25,6 +29,7 @@ bool GroupManager::createGroup(QString name, QString description)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }
 
 void GroupManager::addGroupToFile(int groupId, int fileId)
@@ -55,4 +60,5 @@ bool GroupManager::deleteGroup(int groupId)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }

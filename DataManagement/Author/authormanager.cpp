@@ -12,6 +12,10 @@ AuthorManager::~AuthorManager()
 
 bool AuthorManager::createAuthor(QString name, QString description)
 {
+    if (name == "") {
+        return false;
+    }
+
     DatabaseManager dbm;
     dbm.setHostname("AuthorManager");
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
@@ -25,6 +29,7 @@ bool AuthorManager::createAuthor(QString name, QString description)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }
 
 void AuthorManager::addAuthorToFile(int authorId, int fileId)
@@ -55,4 +60,5 @@ bool AuthorManager::deleteAuthor(int authorId)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }

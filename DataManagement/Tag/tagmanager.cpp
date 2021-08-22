@@ -12,6 +12,10 @@ TagManager::~TagManager()
 
 bool TagManager::createTag(QString name, QString description)
 {
+    if (name == "") {
+        return false;
+    }
+
     DatabaseManager dbm;
     dbm.setHostname("TagManager");
     dbm.openConnection(AccessControlSystem::instance().getSessionPath());
@@ -25,6 +29,7 @@ bool TagManager::createTag(QString name, QString description)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }
 
 void TagManager::addTagToFile(int tagId, int fileId)
@@ -55,4 +60,5 @@ bool TagManager::deleteTag(int tagId)
     query.exec();
 
     dbm.closeConnection();
+    return true;
 }
