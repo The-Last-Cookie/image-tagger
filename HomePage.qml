@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.3
 
-import "uicomponents" as UIComponents
+import "qrc:/uicomponents" as UIComponents
 import DataHandler 1.0
 import Search 1.0
 

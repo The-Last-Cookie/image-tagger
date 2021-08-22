@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.3
 import QtQuick.Window 2.15
 
-import "uicomponents" as UIComponents
+import "qrc:/uicomponents" as UIComponents
 import DataHandler 1.0
 
 Item {
