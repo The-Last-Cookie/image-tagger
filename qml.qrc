@@ -12,6 +12,7 @@
         <file>LoginForm.qml</file>
         <file>CreateAccountForm.qml</file>
         <file>CreateTagDialog.qml</file>
+        <file>AddFileDialog.qml</file>
     </qresource>
     <qresource prefix="/uicomponents">
         <file>FileListView.qml</file>
