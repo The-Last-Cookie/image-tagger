@@ -73,7 +73,7 @@ void UserManager::createUserFiles(QString path)
         "CREATE TABLE authors"
         "("
         "authorId INTEGER NOT NULL UNIQUE,"
-        "name TEXT,"
+        "name TEXT UNIQUE,"
         "description TEXT,"
         "PRIMARY KEY (authorId ASC)"
         ")"
@@ -83,9 +83,9 @@ void UserManager::createUserFiles(QString path)
         "CREATE TABLE tags"
         "("
         "tagId INTEGER NOT NULL UNIQUE,"
-        "name TEXT,"
+        "name TEXT UNIQUE,"
         "description TEXT,"
-        "PRIMARY KEY (tagId  ASC)"
+        "PRIMARY KEY (tagId ASC)"
         ")"
     );
 
@@ -93,9 +93,9 @@ void UserManager::createUserFiles(QString path)
         "CREATE TABLE groups"
         "("
         "groupId INTEGER NOT NULL UNIQUE,"
-        "name TEXT,"
+        "name TEXT UNIQUE,"
         "description TEXT,"
-        "PRIMARY KEY (groupId  ASC)"
+        "PRIMARY KEY (groupId ASC)"
         ")"
     );
 
