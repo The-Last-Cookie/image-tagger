@@ -12,7 +12,7 @@ GroupManager::~GroupManager()
 
 bool GroupManager::createGroup(QString name, QString description)
 {
-    if (name == "") {
+    if (name.isEmpty() || name.contains(" ")) {
         return false;
     }
 
@@ -27,6 +27,10 @@ bool GroupManager::createGroup(QString name, QString description)
     query.bindValue(":name", name);
     query.bindValue(":description", description);
     query.exec();
+
+    if (!query.lastError().text().isEmpty()) {
+        return false;
+    }
 
     dbm.closeConnection();
     return true;

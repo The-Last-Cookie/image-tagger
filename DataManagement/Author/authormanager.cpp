@@ -12,8 +12,8 @@ AuthorManager::~AuthorManager()
 
 bool AuthorManager::createAuthor(QString name, QString description)
 {
-    if (name == "") {
-        return false;
+    if (name.isEmpty() || name.contains(" ")) {
+            return false;
     }
 
     DatabaseManager dbm;
@@ -27,6 +27,10 @@ bool AuthorManager::createAuthor(QString name, QString description)
     query.bindValue(":name", name);
     query.bindValue(":description", description);
     query.exec();
+
+    if (!query.lastError().text().isEmpty()) {
+        return false;
+    }
 
     dbm.closeConnection();
     return true;
