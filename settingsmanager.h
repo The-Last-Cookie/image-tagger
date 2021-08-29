@@ -8,6 +8,7 @@
 #include <QJsonObject>
 
 #include "AccountManagement/accesscontrolsystem.h"
+#include "Utils/fileutils.h"
 
 class SettingsManager : public QObject
 {

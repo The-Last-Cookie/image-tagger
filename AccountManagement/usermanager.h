@@ -10,6 +10,7 @@
 #include "AccountManagement/user.h"
 #include "databasemanager.h"
 #include "StringCalc/stringcalc.h"
+#include "Utils/fileutils.h"
 
 class UserManager
 {

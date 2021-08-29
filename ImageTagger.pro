@@ -40,6 +40,7 @@ SOURCES += \
         StringCalc/hexadecimal.cpp \
         StringCalc/stringcalc.cpp \
         Utils/dateutils.cpp \
+        Utils/fileutils.cpp \
         Utils/inputvalidationutils.cpp \
         databasemanager.cpp \
         logger.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     StringCalc/converter.h \
     StringCalc/stringcalc.h \
     Utils/dateutils.h \
+    Utils/fileutils.h \
     Utils/inputvalidationutils.h \
     databasemanager.h \
     logger.h \

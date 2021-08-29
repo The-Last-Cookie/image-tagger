@@ -12,14 +12,7 @@ UserManager::~UserManager()
 
 void UserManager::addNewUser(User user)
 {
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonObject newUser;
     newUser.insert("username", QJsonValue(user.getUsername()));
@@ -32,7 +25,10 @@ void UserManager::addNewUser(User user)
 
     jsonObject["users"] = users;
 
+    QFile file;
+    file.setFileName("data/users.json");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QJsonDocument jsonDoc;
         jsonDoc.setObject(jsonObject);
 
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
@@ -159,14 +155,7 @@ void UserManager::createUserFiles(QString path)
 
 QString UserManager::createUserId()
 {
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonArray users = jsonObject["users"].toArray();
 
@@ -221,14 +210,7 @@ void UserManager::createDefaultSettingsFile(QString path)
 
 bool UserManager::changePassword(QString path, QString hash)
 {
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonArray users = jsonObject["users"].toArray();
 
@@ -245,8 +227,11 @@ bool UserManager::changePassword(QString path, QString hash)
         }
     }
 
+    QJsonDocument jsonDoc;
     jsonObject.insert("users", QJsonValue(users));
     jsonDoc.setObject(jsonObject);
+    QFile file;
+    file.setFileName("data/users.json");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
@@ -272,15 +257,7 @@ bool UserManager::usernameIsValid(QString username)
         return false;
     }
 
-    // Read in data
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonArray users = jsonObject["users"].toArray();
 
@@ -308,14 +285,7 @@ QString UserManager::retrieveHashFromUser(QString username)
         return "";
     }
 
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonArray users = jsonObject["users"].toArray();
 
@@ -338,14 +308,7 @@ QString UserManager::retrievePathFromUser(QString username)
         return "";
     }
 
-    QFile file;
-    file.setFileName("data/users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QJsonObject jsonObject = FileUtils::readJson("data/users.json");
 
     QJsonArray users = jsonObject["users"].toArray();
 

@@ -12,14 +12,8 @@ SettingsManager::~SettingsManager()
 
 QString SettingsManager::getImportMode()
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     QString importMode = jsonObject["import_mode"].toString();
     return importMode;
@@ -27,18 +21,15 @@ QString SettingsManager::getImportMode()
 
 void SettingsManager::setImportMode(QString mode)
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     jsonObject.insert("import_mode", mode);
 
+    QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObject);
+    QFile file;
+    file.setFileName(settingsPath);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
@@ -50,14 +41,8 @@ void SettingsManager::setImportMode(QString mode)
 
 QString SettingsManager::getTheme()
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     QString theme = jsonObject["theme"].toString();
     return theme;
@@ -65,18 +50,15 @@ QString SettingsManager::getTheme()
 
 void SettingsManager::setTheme(QString theme)
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     jsonObject.insert("theme", theme);
 
+    QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObject);
+    QFile file;
+    file.setFileName(settingsPath);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
@@ -88,14 +70,8 @@ void SettingsManager::setTheme(QString theme)
 
 bool SettingsManager::getEncryption()
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     bool encryption = jsonObject["encryption"].toBool();
     return encryption;
@@ -103,18 +79,15 @@ bool SettingsManager::getEncryption()
 
 void SettingsManager::setEncryption(bool encryption)
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     jsonObject.insert("encryption", encryption);
 
+    QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObject);
+    QFile file;
+    file.setFileName(settingsPath);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
@@ -126,14 +99,8 @@ void SettingsManager::setEncryption(bool encryption)
 
 QString SettingsManager::getLanguage()
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     QString language = jsonObject["language"].toString();
     return language;
@@ -141,18 +108,15 @@ QString SettingsManager::getLanguage()
 
 void SettingsManager::setLanguage(QString language)
 {
-    QFile file;
-    file.setFileName("data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString data = file.readAll();
-    file.close();
-
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(data.toUtf8());
-    QJsonObject jsonObject = jsonDoc.object();
+    QString settingsPath = "data/" + AccessControlSystem::instance().getSessionPath() + "/settings.json";
+    QJsonObject jsonObject = FileUtils::readJson(settingsPath);
 
     jsonObject.insert("language", language);
 
+    QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObject);
+    QFile file;
+    file.setFileName(settingsPath);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
 
