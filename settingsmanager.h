@@ -19,16 +19,16 @@ class SettingsManager : public QObject
         ~SettingsManager();
 
     public slots:
-        QString getImportMode();
-        void setImportMode(QString mode);
+        static QString getImportMode();
+        static void setImportMode(QString mode);
 
-        QString getTheme();
-        void setTheme(QString theme);
+        static QString getTheme();
+        static void setTheme(QString theme);
 
-        bool getEncryption();
-        void setEncryption(bool encryption);
+        static bool getEncryption();
+        static void setEncryption(bool encryption);
 
-        QString getLanguage();
-        void setLanguage(QString language);
+        static QString getLanguage();
+        static void setLanguage(QString language);
 };
 

@@ -12,4 +12,3 @@ class FileUtils
 
         static QJsonObject readJson(QString path);
 };
-
