@@ -154,20 +154,7 @@ void UserManager::createUserFiles(QString path)
     dbm.closeConnection();
 
     // Create settings.json
-    QJsonObject settings = createDefaultSettingsFile();
-
-    QFile file;
-    file.setFileName("data/" + path + "/settings.json");
-    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
-        QJsonDocument jsonDoc;
-        jsonDoc.setObject(settings);
-
-        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
-
-        QTextStream out(&file);
-        out << bytes;
-    }
-    file.close();
+    createDefaultSettingsFile(path);
 }
 
 QString UserManager::createUserId()
@@ -210,7 +197,7 @@ QString UserManager::createUserPath()
     return newFileName;
 }
 
-QJsonObject UserManager::createDefaultSettingsFile()
+void UserManager::createDefaultSettingsFile(QString path)
 {
     QJsonObject settings;
     settings.insert("language", "en");
@@ -218,7 +205,18 @@ QJsonObject UserManager::createDefaultSettingsFile()
     settings.insert("encryption", true);
     settings.insert("import_mode", "move");
 
-    return settings;
+    QFile file;
+    file.setFileName("data/" + path + "/settings.json");
+    if (file.open(QIODevice::WriteOnly | QIODevice::NewOnly | QIODevice::Text)) {
+        QJsonDocument jsonDoc;
+        jsonDoc.setObject(settings);
+
+        QByteArray bytes = jsonDoc.toJson(QJsonDocument::Indented);
+
+        QTextStream out(&file);
+        out << bytes;
+    }
+    file.close();
 }
 
 bool UserManager::changePassword(QString path, QString hash)

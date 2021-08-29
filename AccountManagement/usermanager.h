@@ -21,7 +21,6 @@ class UserManager
         void createUserFiles(QString path);
         QString createUserId();
         QString createUserPath();
-        QJsonObject createDefaultSettingsFile();
 
         bool changePassword(QString path, QString hash);
 
@@ -31,4 +30,7 @@ class UserManager
         QString retrievePathFromUser(QString username);
 
         bool usernameIsValid(QString username);
+
+    private:
+        void createDefaultSettingsFile(QString path);
 };
