@@ -31,10 +31,12 @@ class AccessControlSystem : public QObject
 
         bool changePassword(QString oldPassword, QString newPassword, QString newPasswordConfirm);
 
+        // TODO: make methods in PasswordManager static, so that these methods can get moved to TextProviderUtils
         int getPasswordMinLength();
         int getPasswordMinNumUpper();
         int getPasswordMinNumLower();
         QString getPasswordSpecialChars();
+        QString getPasswordRulesText();
 
         QString getSessionPath();
 

@@ -160,6 +160,17 @@ QString AccessControlSystem::getPasswordSpecialChars()
     return m_pwm.getSpecialChars();
 }
 
+QString AccessControlSystem::getPasswordRulesText()
+{
+    QString text = "It seems that either that username is already taken or that your password is not safe enough. A password has these constraints: ";
+    text.append("**at least %1 characters long**, ");
+    text.append("**at least %2 uppercase letters**, ");
+    text.append("**at least %3 lowercase letters** and ");
+    text.append("**at least one special character** (%4).");
+
+    return text;
+}
+
 QString AccessControlSystem::getSessionPath()
 {
     return m_session.getPath();
