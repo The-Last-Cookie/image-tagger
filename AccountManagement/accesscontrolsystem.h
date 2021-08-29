@@ -31,9 +31,6 @@ class AccessControlSystem : public QObject
 
         bool changePassword(QString oldPassword, QString newPassword, QString newPasswordConfirm);
 
-        void encryptFiles(QString path);
-        void decryptFiles(QString path);
-
         int getPasswordMinLength();
         int getPasswordMinNumUpper();
         int getPasswordMinNumLower();
@@ -44,6 +41,9 @@ class AccessControlSystem : public QObject
     private:
         explicit AccessControlSystem(QObject *parent = nullptr);
         static AccessControlSystem* m_instance;
+
+        void encryptFiles(QString path);
+        void decryptFiles(QString path);
 
         PasswordManager m_pwm;
         UserManager m_um;
