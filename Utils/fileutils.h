@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QObject>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QString>
@@ -8,8 +7,6 @@
 
 class FileUtils
 {
-    Q_OBJECT
-
     public:
         FileUtils();
 
